@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Onboarding for Online Faculty - Curtis Wang</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@100..900&display=swap">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="portfolio-logo">
+                <a href="../../index.html">
+                    <img src="../../assets/logo.png" alt="Curtis Wang Logo">
+                </a>
+            </div>
+            <h2><a href="../about.html">About</a></h2>
+            <h2><a href="../ideas.html">Ideas</a></h2>
+            <h2><a href="../projects.html">Projects</a></h2>
+        </div>
+        <div class="footer">
+            <p>&copy; 2026 Curtis Wang</p>
+        </div>
+    </nav>
+    <main class="main-content">
+        <div class="header">
+            <h1>EMHA & MPA Online Faculty Onboarding</h1>
+        </div>
+        <div class="project-hero">
+            <img src="../../assets/placeholder-16-9.jpg" alt="EMHA & MPA Online Faculty Onboarding">
+            <div class="project-intro">
+                <p>A HubSpot-powered onboarding system that unified USC Price School's fragmented, multi-office
+                    onboarding process into a single adaptive experience — delivering personalized, just-in-time support
+                    to each new adjunct faculty member through automated workflows, without adding overhead to staff.
+                </p>
+            </div>
+        </div>
+        <div class="project-body">
+            <div class="project-meta-col">
+                <div class="project-meta-item">
+                    <div class="project-meta-value">USC Price School of Public Policy</div>
+                </div>
+                <div class="project-meta-item">
+                    <div class="project-meta-value">Los Angeles, CA</div>
+                </div>
+                <div class="project-meta-item">
+                    <div class="project-meta-value">2018</div>
+                </div>
+                <div class="project-meta-item">
+                    <div class="project-tag-container">
+                        <p class="project-tag">Learning Experience Design</p>
+                        <p class="project-tag">Systems Design</p>
+                    </div>
+                </div>
+                <div class="project-meta-link">
+                    <a href="#" target="_blank">View Project →</a>
+                </div>
+            </div>
+            <div class="project-sections-col">
+                <h2>Problem &amp; Learner Context</h2>
+                <p>Each year, a dozen new adjunct faculty join USC Price's online graduate programs — typically with
+                    limited experience teaching in a fully asynchronous environment. Without the social scaffolding of a
+                    physical campus, these instructors were left to navigate a fragmented and often isolating onboarding
+                    process largely on their own. Three distinct problems characterized the status quo.</p>
+                <p><strong>Isolation.</strong> New instructors had little more than a few preliminary phone calls with
+                    HR and the Program Coordinator, plus functional emails walking through access procedures. The
+                    standing invitation to "reach out if you have any questions" added to the burden by forcing
+                    instructors to self-diagnose whether they were genuinely stuck or had simply overlooked an
+                    instruction. Those who were already confident self-starters had an outsized advantage over those who
+                    weren't.</p>
+                <p><strong>Fragmentation.</strong> Different offices at USC Price managed different onboarding tasks —
+                    compliance trainings, email setup, LMS orientation, course content access — with little awareness of
+                    each other's requirements. One office might push outdated instructions after a tool update; another
+                    might repeat requirements an instructor had already completed. The instructor bore the greatest
+                    burden of coordination, with no consolidated view of their own progress.</p>
+                <p><strong>One-size-fits-all training.</strong> Two hour-long sessions on Moodle and Adobe Connect were
+                    required of all new faculty two weeks before the semester. Most content was not targeted to each
+                    instructor's actual comfort level or specific teaching context, resulting in wasted time for those
+                    already proficient and information overload for those who weren't.</p>
+
+                <h3>The Real-World Performance Gap</h3>
+                <p>Beyond administrative setup, operational reality in our online graduate learning environment required
+                    high technical and logistical precision. Faculty were expected to self-navigate a complex ecosystem:
+                    locating specific course URLs, managing live session rooms in Adobe Connect, and correctly
+                    distributing custom course readers or PDF packages. Because faculty lacked a functional baseline
+                    operational standard, the first few weeks of every semester became a high-stress bottleneck defined
+                    by avoidable technical and logistical slip-ups.</p>
+
+                <h3>The Business &amp; Operational Impact</h3>
+                <p>The lack of structural onboarding posed a severe threat to operational efficiency and brand
+                    reputation. Mundane technical errors single-handedly delayed live sessions or resulted in inaccurate
+                    logistics being passed to students. Crucially, common user errors—such as instructors refusing to
+                    wear headphones—caused grating audio feedback during live broadcasts. To mitigate this, internal
+                    design staff had to be physically present at every single introductory live session to troubleshoot
+                    and coach instructors in front of their own students. This process induced immense stress for the
+                    instructors, degraded the student experience, and created an unsustainable, unscalable drain on our
+                    team's operational resources.</p>
+
+                <h2>My Design Decisions &amp; Rationale</h2>
+                <p>The core insight driving the solution was that onboarding in an online environment needs to do the
+                    social work that a physical campus does automatically — and that this requires responsiveness, not
+                    just more information. That framing led to two foundational design decisions.</p>
+                <p>First, all onboarding content — previously distributed across separate offices — was centralized into
+                    a single HubSpot-based experience. This gave instructors a unified, transparent view of their own
+                    progress and eliminated the confusion caused by overlapping office responsibilities. HubSpot was
+                    chosen specifically for its workflow automation capabilities, which allowed the system to respond to
+                    instructor behavior in real-time without requiring manual monitoring from staff.</p>
+                <p>Second, an iterative design process was adopted because of a key constraint: certain tasks could only
+                    be completed after others were finished. For example, an instructor could only access Moodle course
+                    content after their USC NetID was provisioned — a step outside the design team's direct control.
+                    Mapping these dependencies forced the experience to be structured around each instructor's realistic
+                    situation rather than an idealized linear sequence. Each design iteration cycled between ideation,
+                    wireframing, and testing with actual faculty, surfacing constraints that weren't visible from
+                    planning documents alone.</p>
+
+                <h3>Bypassing the Rigid OPM Blueprint</h3>
+                <p>A significant portion of our online learning operations was historically tied to an institutional
+                    partnership with a major Online Program Manager (OPM), Pearson Mbinet. OPM frameworks are typically
+                    rigid, high-cost, "one-size-fits-all" ecosystems that often fail to align with the unique
+                    programmatic needs of a specific school. Rather than accepting an outsourced, suboptimal fit, I
+                    championed a homegrown solution built within HubSpot to cut out the excess logistical procedures and
+                    essentially extract the noise from the signal.</p>
+
+                <h3>Strategic Stakeholder Navigation</h3>
+                <p>To navigate a sensitive vendor landscape and manage underlying institutional tensions, we initiated
+                    and deployed this onboarding system as a parallel pilot. We offered instructors an explicit choice:
+                    they could follow the rigid, standard OPM onboarding path with an external account manager, or opt
+                    to self-onboard at their own pace using our automated homegrown system. This strategic positioning
+                    framed the project not as an outright rejection of the vendor, but as a lean, cost-effective pilot
+                    designed to evaluate institutional autonomy and prepare the school to eventually break free from a
+                    restrictive OPM contract.</p>
+
+                <h2>Project Walkthrough &amp; Highlights</h2>
+                <p>The final system had two defining features: the centralization of previously fragmented onboarding
+                    content into one coherent experience, and a layer of logic-driven automation that enabled
+                    personalized — but non-invasive — support based on how each instructor engaged with the system.</p>
+                <p>HubSpot workflows were the vehicle for this personalization. One workflow assessed instructor comfort
+                    after each onboarding module: at the conclusion of a task, instructors rated their perceived
+                    confidence on a 1–5 scale. Based on their cumulative score, the system automatically triggered
+                    varied responses — from a warm invitation to schedule a one-on-one meeting, to a curated set of
+                    supplemental resources, to a brief virtual affirmation. A second workflow tracked time since last
+                    login; if an instructor had been absent for more than seven days, a gentle nudge email was
+                    automatically sent to re-engage them — without ever requiring a staff member to manually follow up.
+                </p>
+                <p>These automations were designed to feel supportive rather than surveillance-like: the goal was to
+                    replicate the informal check-in a colleague might offer in a physical office, at scale and without
+                    administrative overhead.</p>
+
+                <h3>Logic-Driven Branching Architecture</h3>
+                <p>The core engine of this experience is its backend conditional logic. Rather than navigating a linear
+                    sequence of pages, the instructor’s journey is dictated by a multi-node decision tree. By leveraging
+                    self-reported feedback at key diagnostic nodes, the system adapts to the user's specific baseline. A
+                    returning instructor can bypass basic administrative setup, while an instructor needing help
+                    assembling a course reader from the Harvard Business School collection is automatically routed to a
+                    dedicated, step-by-step instructional pathway.</p>
+
+                <h3>Curated Micro-Learning Snippets</h3>
+                <p>Within each branched node, information is highly chunked. Long-form compliance text was replaced with
+                    targeted micro-learning elements, including brief, contextual screencasts that visually demonstrated
+                    high-risk tasks—such as configuring Adobe Connect audio parameters to prevent classroom audio
+                    feedback loops before the first live broadcast.</p>
+
+                <h2>Results &amp; Evidence of Value</h2>
+                <h3>Operational Stabilization &amp; Ticket Reduction</h3>
+                <p>Given the selective, specialized nature of graduate faculty cohorts, quantitative success was
+                    evaluated not by massive sample sizes, but by the direct stabilization of our operational
+                    environment. The primary metric of success was the drastic reduction of day-one technical issues and
+                    support tickets. Following the deployment of the portal, support interventions dropped noticeably
+                    from consistent double-digit panics down to isolated, single-digit edge cases.</p>
+
+                <h3>Qualitative Faculty Validation</h3>
+                <p>The most compelling evidence of value came through direct faculty feedback. The onboarding portal
+                    received explicit accolades and validation from a surprising number of instructors who thanked our
+                    team for respecting their time and setting them up for genuine classroom success. Multiple faculty
+                    members specifically expressed profound relief at being bypassed around the traditional, tedious OPM
+                    onboarding process.</p>
+
+                <h2>Reflection &amp; Lessons Learned</h2>
+                <h3>Infrastructure vs. Cost Sustainability</h3>
+                <p>From an instructional and behavioral standpoint, every engineered component of the portal
+                    successfully achieved its objective, rendering the pilot an internal triumph for our department.
+                    However, an honest post-mortem highlights the cost of our infrastructure. HubSpot served as an
+                    exceptionally powerful, reliable engine to prove our concept and secure a highly visible win without
+                    technical failure. Yet, its licensing fees are premium.</p>
+
+                <h3>The Architectural Pivot Plan</h3>
+                <p>If given the opportunity to build Version 2.0, I would look to optimize the technical stack by
+                    migrating to a leaner combination of independent SaaS tools—such as coupling Typeform's conditional
+                    logic engines with Zapier automation workflows. While combining disparate tools introduces
+                    additional integration checkpoints and potential vectors for technical error, the substantial
+                    reduction in software overhead would make the solution significantly more sustainable and scalable
+                    for localized departments lacking corporate enterprise budgets.</p>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

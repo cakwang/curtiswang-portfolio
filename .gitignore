@@ -1,0 +1,4 @@
+content & inspo/
+.claude/
+*.py
+WORKSPACE.code-workspace

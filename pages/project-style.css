@@ -1,0 +1,204 @@
+/*
+ * Curtis Wang Portfolio
+ * Project Page Style Sheet
+ */
+
+/* ===== VARIABLES ===== */
+:root {
+    --color-accent: #3c00ff;
+    --color-text: #333;
+    --color-text-muted: #666;
+    --color-text-subtle: #555;
+    --color-text-caption: #888;
+    --color-bg: #fcfcfc;
+    --color-bg-subtle: #f0f0f0;
+    --color-border: #e6e6e6;
+    --transition: 0.3s ease;
+}
+
+/* ===== BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text-muted);
+    line-height: 1.6;
+}
+
+/* ===== PROJECT PAGE LAYOUT ===== */
+.project-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* ===== PROJECT HEADER ===== */
+.project-header {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.project-header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.project-header h2 {
+    font-size: 18px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+}
+
+.project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 30px 0;
+}
+
+.project-meta h2 {
+    font-size: 14px;
+}
+
+/* ===== PROJECT CONTENT ===== */
+.project-content {
+    max-width: 800px;
+    display: block;
+}
+
+.project-content h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.project-content h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.project-content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.project-content ul,
+.project-content ol {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.project-content li {
+    margin-bottom: 10px;
+}
+
+/* ===== PROJECT IMAGES ===== */
+.project-image-container {
+    margin: 32px;
+}
+
+.project-image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+}
+
+.image-caption {
+    font-size: 14px;
+    color: var(--color-text-caption);
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* ===== PROJECT LINKS ===== */
+.project-content a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+.project-content a:hover {
+    text-decoration: underline;
+}
+
+/* ===== PROJECT TAGS ===== */
+.project-tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 30px 0;
+}
+
+.project-tag {
+    background-color: var(--color-bg-subtle);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    color: var(--color-text-subtle);
+}
+
+/* ===== CODE BLOCKS ===== */
+.project-content code {
+    background-color: var(--color-bg-subtle);
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.project-content pre {
+    background-color: var(--color-bg-subtle);
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+/* ===== BACK BUTTON ===== */
+.back-button {
+    display: inline-block;
+    margin-bottom: 30px;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+.back-button:hover {
+    color: var(--color-accent);
+}
+
+.back-button:before {
+    content: "←";
+    margin-right: 5px;
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 768px) {
+    .project-container {
+        padding: 20px;
+    }
+
+    .project-header h1 {
+        font-size: 28px;
+    }
+
+    .project-meta {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
