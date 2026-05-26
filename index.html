@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curtis Wang - Professional Portfolio</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@100..900&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages/landing-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Iris overlay: SVG mask with an expanding black circle punches a growing hole
+         in the cream fill, radiating from center to reveal the background photo -->
+    <svg id="iris-overlay" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+        <defs>
+            <mask id="iris-mask">
+                <rect width="100%" height="100%" fill="white" />
+                <circle id="iris-hole" r="0" fill="black" />
+            </mask>
+        </defs>
+        <rect width="100%" height="100%" fill="#fcfcfc" mask="url(#iris-mask)" />
+    </svg>
+
+    <!-- Inline signature SVG — paths drawn via stroke-dashoffset animation -->
+    <div id="intro-sig-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 682.69 423.08">
+            <defs>
+                <style>
+                    .sig-path {
+                        fill: none;
+                        stroke: #000;
+                        stroke-linecap: round;
+                        stroke-linejoin: round;
+                        stroke-width: 18px;
+                    }
+                </style>
+            </defs>
+            <path id="sig-C" class="sig-path"
+                d="M116.49,229.76c-15.68,24.39-94.05,58.29-97.55-3.19-4.92-86.52,124.66-184.41,137.15-159.68,19.35,38.32-60,95.23-72.41,98.42-4.25,1.1,0-5.23,0-5.23" />
+            <path id="sig-URTIS" class="sig-path"
+                d="M163.81,150.5s-33.39,40.06-11.61,40.06,50.23-31.65,62.42-48.19c0,0-13.04,37.28,3.19,34.55,27.58-4.65,63.87-32.23,85.65-61.26,0,0-12.19,27.58-27.58,47.32,0,0,19.74-18.87,37.45-50.23,0,0,53.71,21.19,71.13-1.74s47.03-62.13,71.13-95.23c0,0-92.61,105.1-70.26,121.06s85.06-47.03,85.06-47.03c0,0-21.48,30.48,0,29.32s47.32-18,59.23-29.61,29.9-33.39,31.06-36-17.42,2.9-13.65,13.35,15.1,40.65,9,50.52-46.05,12.85-8.13-18c21.77-17.71,32.81-12.48,73.74-37.74" />
+            <path id="sig-T-cross" class="sig-path" d="M365.01,70.95s38.03-22.94,88.84-23.81" />
+            <path id="sig-I-dot" class="sig-path" d="M472.86,64.71s1.89-3.56,2.83-4.14" />
+            <path id="sig-W" class="sig-path"
+                d="M86.3,284.63c1.16,2.32,34.59-36.94,32.81-58.35-.29-3.48-99.98,109.45-70.26,179.71,6.39,15.1,70.84-105.39,105.68-141.97,0,0-39.8,107.22-1.45,122.23,26.71,10.45,102.77-150.97,67.06-205.55" />
+            <path id="sig-ANG" class="sig-path"
+                d="M293.73,255.02c-10.45-3.19-52.74,31.51-51.82,60.1.58,18,60.82-40.79,57.19-56.18,0,0-.29,23.52,20.61,22.5,20.9-1.02,49.94-16.69,69.39-47.61,0,0-8.85,24.29-23.95,42.34,0,0,36.15-56.13,46.02-46.11s11.9,33.53,28.6,35.71c16.69,2.18,39.77-19.89,51.97-32.66s50.81-54,50.23-21.92c0,0-4.21-26.42-30.05-.44-25.84,25.98-26.27,44.71-11.9,35.27,14.37-9.44,62.81-55.06,74.9-32.68,7.69,14.24-2.47,38.39-5.66,48.02-3.19,9.63-33.1,85.26-87.1,105s44.56-110.47,189.44-181.02" />
+        </svg>
+    </div>
+
+    <div class="mobile-header" id="mobile-header">
+        <a href="index.html" class="mobile-logo-link">
+            <img src="assets/logo.png" alt="Curtis Wang" class="mobile-logo-img">
+        </a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="portfolio-logo">
+                <a href="index.html">
+                    <img src="assets/logo.png" alt="Curtis Wang Logo">
+                </a>
+            </div>
+
+            <h2><a href="pages/about.html">About</a></h2>
+            <h2><a href="pages/ideas.html">Ideas</a></h2>
+            <h2><a href="pages/projects.html">Projects</a></h2>
+        </div>
+        <div class="footer">
+            <p>&copy; 2026 Curtis Wang</p>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="hero">
+            <div class="typewriter-container">
+                <div class="static-line-clip">
+                    <div class="static-text">Hi, I'm Curtis!</div>
+                </div>
+                <div class="static-line-clip">
+                    <div class="static-text">I solve business problems through</div>
+                </div>
+                <div class="typewriter-wrapper">
+                    <span class="typewriter-text"></span>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+
+            <a id="recent-entry-card" href="pages/ideas.html">
+                <div class="recent-entry-label">Curtis's latest post</div>
+                <div class="recent-entry-title"><span class="highlight">Would you teach your child to code?</span></div>
+                <div class="recent-entry-date">May 15, 2026</div>
+                <div class="recent-entry-excerpt">There were two distinct moments in my life when my parents talked me
+                    out of two careers. The first was when I was young—like, elementary school young. I wanted to be
+                    a...</div>
+                <div class="recent-entry-readmore">Read more →</div>
+            </a>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="scripts/mobile-menu.js"></script>
+
+    <script>
+        // ===== TYPEWRITER =====
+        const words = ["human-centered design.", "learning science.", "responsible AI.", "education technology.", "entrepreneurial leadership.", "product strategy.", "elegant UI/UX.", "rapid prototyping."];
+        const typingDelay = 50;
+        const erasingDelay = 25;
+        const newWordDelay = 1500;
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterElement = document.querySelector('.typewriter-text');
+
+        function type() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                typewriterElement.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterElement.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            let delay = isDeleting ? erasingDelay : typingDelay;
+            if (!isDeleting && charIndex === currentWord.length) {
+                delay = newWordDelay;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+            }
+            setTimeout(type, delay);
+        }
+
+        // ===== INTRO ANIMATION =====
+        window.addEventListener('DOMContentLoaded', () => {
+            const isMobile = window.innerWidth <= 768;
+
+            const sigPaths = [
+                document.getElementById('sig-C'),
+                document.getElementById('sig-URTIS'),
+                document.getElementById('sig-T-cross'),
+                document.getElementById('sig-I-dot'),
+                document.getElementById('sig-W'),
+                document.getElementById('sig-ANG')
+            ];
+
+            // Measure each path and set up stroke-dashoffset for drawing animation
+            const pathLengths = sigPaths.map(p => p.getTotalLength());
+            const totalLength = pathLengths.reduce((a, b) => a + b, 0);
+            const drawDuration = 1.25;
+
+            // A large gap in dasharray prevents the round-linecap from rendering a
+            // dot at the endpoint before the draw animation begins.
+            // sig-C (index 0) uses a negative offset so it draws end→start (top-down).
+            sigPaths.forEach((path, i) => {
+                const L = pathLengths[i];
+                const offset = (i === 0) ? -(L + 1) : (L + 1);
+                gsap.set(path, { strokeDasharray: `${L} ${L + 1000}`, strokeDashoffset: offset });
+            });
+
+            // Position iris hole at viewport center; size it to cover full screen
+            const cx = window.innerWidth / 2;
+            const cy = window.innerHeight / 2;
+            const maxR = Math.hypot(cx, cy) + 10;
+            const irisHole = document.getElementById('iris-hole');
+            irisHole.setAttribute('cx', cx);
+            irisHole.setAttribute('cy', cy);
+
+            // Initial states — all hidden until the timeline reaches them
+            if (!isMobile) gsap.set('.navbar', { x: -285 });
+            if (isMobile) gsap.set('.mobile-header', { autoAlpha: 0 });
+            gsap.set('.static-text', { y: '-100%' });
+            gsap.set('.typewriter-wrapper', { autoAlpha: 0 });
+            gsap.set('#recent-entry-card', { autoAlpha: 0, y: 320, rotation: -2, scale: 0.9 });
+
+            const tl = gsap.timeline();
+
+            // Phase 1 — Draw signature (0.5 s delay, then 2.5 s total)
+            // sig-C gets power1.in so the very first stroke eases in gently;
+            // all subsequent paths draw at constant speed.
+            let t = 0.5;
+            sigPaths.forEach((path, i) => {
+                const dur = (pathLengths[i] / totalLength) * drawDuration;
+                tl.to(path, { strokeDashoffset: 0, duration: dur, ease: i === 0 ? 'power3.in' : 'none' }, t);
+                t += dur;
+            });
+            // t ≈ 3.0 when drawing finishes
+
+            // Phase 2 — Invert signature to white; iris open radiates from center
+            tl.set('#intro-sig-wrapper', { filter: 'invert(1)' }, t);
+            tl.to(irisHole, { attr: { r: maxR }, duration: 0.4, ease: 'power2.out' }, t);
+            t += 0.4;
+            // t ≈ 3.4
+
+            // Phase 3 — Signature flies off to the left
+            tl.to('#intro-sig-wrapper', { x: -(window.innerWidth + 200), duration: 0.25, ease: 'power3.in' }, t);
+            t += 0.25;
+            // t ≈ 3.65
+
+            // Phase 4 — Remove overlay; navbar slides in (desktop) or mobile header fades in; text peeks down
+            tl.set('#iris-overlay', { display: 'none' }, t);
+
+            const staticTexts = document.querySelectorAll('.static-text');
+            if (!isMobile) {
+                tl.to('.navbar', { x: 0, duration: 0.4, ease: 'power3.out' }, t);
+            } else {
+                tl.to('.mobile-header', { autoAlpha: 1, duration: 0.4, ease: 'power2.out' }, t);
+            }
+            tl.to(staticTexts[0], { y: 0, duration: 0.35, ease: 'power2.out' }, t);
+            tl.to(staticTexts[1], { y: 0, duration: 0.35, ease: 'power2.out' }, t + 0.15);
+            t += 0.15 + 0.35;
+            // t ≈ 4.15 — second line fully revealed
+
+            // Phase 5 — Typewriter begins
+            tl.set('.typewriter-wrapper', { autoAlpha: 1 }, t);
+            tl.call(type, null, t);
+
+            // Phase 6 — Recent entry card rises up from below viewport into peeking position
+            tl.to('#recent-entry-card', { autoAlpha: 1, y: 0, scale: 0.9, duration: 0.75, ease: 'power3.out' }, t + 0.35);
+
+            // Hover animation — floats card to center, fully into view, un-rotates, subtly scales
+            const card = document.getElementById('recent-entry-card');
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    y: -106,
+                    rotation: 0,
+                    scale: 1.10,
+                    boxShadow: '0 28px 56px rgba(0, 0, 0, 0.15)',
+                    duration: 0.25,
+                    ease: 'power2.out'
+                });
+            });
+            card.addEventListener('click', () => {
+                sessionStorage.setItem('ideas-load', 'ideas/2026-05-15_learningtocode.html');
+            });
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    y: 0,
+                    rotation: -2,
+                    scale: 0.9,
+                    boxShadow: '0 4px 24px rgba(0, 0, 0, 0.1)',
+                    duration: 0.25,
+                    ease: 'power2.in'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
