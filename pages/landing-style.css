@@ -1,0 +1,236 @@
+/* Landing page styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-image: url('../assets/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.typewriter-container {
+    padding: 120px 80px;
+}
+
+.static-text {
+    font-size: 56px;
+    margin-bottom: 12px;
+    color: white;
+}
+
+.typewriter-wrapper {
+    display: inline-block;
+    margin-top: -24px;
+}
+
+.typewriter-text {
+    font-size: 112px;
+    color: white;
+}
+
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 132px;
+    background-color: white;
+    margin-left: 2px;
+    animation: blink 1s infinite;
+    font-family: 'Instrument Serif', serif;
+    font-size: 156px;
+    position: relative;
+    top: 16px;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    49% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    99% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Override Inter from style.css's * rule for landing page text */
+.static-text,
+.typewriter-text,
+.cursor {
+    font-family: 'Instrument Serif', serif;
+}
+
+/* ===== INTRO ANIMATION ELEMENTS ===== */
+
+/* Full-screen SVG that creates the iris overlay effect */
+#iris-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    pointer-events: none;
+}
+
+/* Full-screen flex wrapper centers the signature SVG */
+#intro-sig-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: 9001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+#intro-sig-wrapper svg {
+    width: min(50vw, 480px);
+    height: auto;
+}
+
+/* Clips each static text line so it can peek down into view */
+.static-line-clip {
+    overflow: hidden;
+}
+
+/* ===== RECENT ENTRY CARD ===== */
+#recent-entry-card {
+    position: fixed;
+    bottom: -72px;
+    left: calc(50% - 360px);
+    width: 720px;
+    background: rgba(252, 252, 252, 0.93);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(230, 230, 230, 0.75);
+    border-radius: 6px;
+    padding: 22px 40px 18px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    will-change: transform, box-shadow;
+    overflow: hidden;
+}
+
+#recent-entry-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 0%, transparent 30%, rgba(0, 0, 0, 0.5) 100%);
+    pointer-events: none;
+    transition: opacity 0.25s ease-in;
+}
+
+#recent-entry-card:hover::after {
+    opacity: 0;
+    transition: opacity 0.25s ease-out;
+}
+
+.recent-entry-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #3c00ff;
+    margin-bottom: 10px;
+}
+
+.recent-entry-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: #333;
+    line-height: 1.2;
+    margin-bottom: 5px;
+}
+
+#recent-entry-card .highlight {
+    background-color: #ffff9a;
+    font-family: inherit;
+    font-weight: inherit;
+}
+
+.recent-entry-date {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.recent-entry-excerpt {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.recent-entry-readmore {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #3c00ff;
+    text-align: right;
+    letter-spacing: 0.01em;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .typewriter-container {
+        padding: 60px 24px 32px;
+    }
+
+    .static-text {
+        font-size: 30px;
+        margin-bottom: 8px;
+    }
+
+    .typewriter-text {
+        font-size: 52px;
+    }
+
+    .cursor {
+        width: 5px;
+        height: 62px;
+        font-size: 82px;
+        top: 8px;
+    }
+
+    #recent-entry-card {
+        left: 16px;
+        right: 16px;
+        width: auto;
+        padding: 16px 20px 12px;
+    }
+
+    .recent-entry-title {
+        font-size: 24px;
+    }
+
+    .recent-entry-excerpt {
+        font-size: 14px;
+    }
+}

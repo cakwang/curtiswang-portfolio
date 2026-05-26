@@ -1,1 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Curtis Wang</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@100..900&display=swap">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tldr-wrapper {
+            display: inline-block;
+            align-self: flex-start;
+            background-color: #f2f2f2;
+            border: 1px solid #b0b0b0;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 0 0 24px;
+            cursor: pointer;
+            color: var(--color-text-muted);
+        }
+
+        .tldr-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 500;
+            user-select: none;
+        }
+
+        .tldr-body {
+            display: none;
+            padding: 0 30px;
+        }
+
+        .tldr-body p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--color-text-muted);
+            padding: 6px 0 18px;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mobile-header" id="mobile-header">
+        <a href="../index.html" class="mobile-logo-link">
+            <img src="../assets/logo.png" alt="Curtis Wang" class="mobile-logo-img">
+        </a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="portfolio-logo">
+                <a href="../index.html">
+                    <img src="../assets/logo.png" alt="Curtis Wang Logo">
+                </a>
+            </div>
+
+            <h2><a href="about.html">About</a></h2>
+            <h2><a href="ideas.html">Ideas</a></h2>
+            <h2><a href="projects.html">Projects</a></h2>
+        </div>
+        <div class="footer">
+            <p>&copy; 2026 Curtis Wang</p>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="header">
+            <h1>About</h1>
+        </div>
+        <div class="content-row">
+            <div class="content-body">
+                <div class="profile-section">
+                    <div class="profile-left-column">
+                        <img src="../assets/profile.jpg" alt="Curtis Wang" class="profile-image">
+                        <div class="contact-icons">
+                            <a href="mailto:curtis@curtiswang.com"><i class="fas fa-envelope"></i></a>
+                            <a href="https://www.linkedin.com/in/cakwang/" target="_blank"><i
+                                    class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/cakwang/" target="_blank"><i class="fab fa-github"></i></a>
+                        </div>
+                        <a href="../assets/CAKW_2026_Resume.pdf" class="resume-btn" target="_blank">Download Resume</a>
+
+                        <div class="skills-section">
+                            <div class="skills-tags">
+                                <span class="skill-tag">Education research</span>
+                                <span class="skill-tag">Human-centered design</span>
+                                <span class="skill-tag">UI/UX</span>
+                                <span class="skill-tag">HTML/CSS/JS</span>
+                                <span class="skill-tag">Academic writing</span>
+                                <span class="skill-tag">Digital marketing</span>
+                                <span class="skill-tag">Multimedia production</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-blurb">
+                        <p class="tagline">I'm a Learning Experience Designer thriving at the intersection of education,
+                            design, and technology.
+                        </p>
+                        <div class="tldr-wrapper" id="tldr-wrapper">
+                            <div class="tldr-header">
+                                <span>tl;dr</span>
+                                <i class="fas fa-chevron-down" id="tldr-caret"></i>
+                            </div>
+                            <div class="tldr-body" id="tldr-body">
+                                <p>My mission is to preserve the humanity of learning by combining cross-disciplinary
+                                    approaches with evidence-based research to build rigorous, accessible experiences.
+                                    Currently at Kaiser Permanente, I design scalable training and change management
+                                    solutions while exploring the ethical integration of AI into modern work culture. My
+                                    academic background spans degrees from the University of Toronto, Stanford, and USC,
+                                    culminating in doctoral research on the existential challenges of modern
+                                    instructional design. To bridge the gap between traditional models and contemporary
+                                    digital realities, I leverage insights from diverse disciplines from game design to
+                                    UI/UX to behavioral economics.</p>
+                            </div>
+                        </div>
+                        <p>Through both professional practice and research, my lifelong mission is to help preserve the
+                            humanity of deep learning amidst rapid and often disruptive change. Over time, this has
+                            taken various forms across diverse contexts, from K-12 teaching to ed-tech integration, and
+                            more recently, to higher education, informal learning, and larger-scale corporate change
+                            management. Across virtually all these roles, I've seen that traditional learning models
+                            alone are insufficient, and have increasingly found it necessary to combine
+                            cross-disciplinary approaches with evidence-based research to build rigorous learning
+                            experiences that simultaneously broaden access and deepen learning outcomes. More recently,
+                            I've also become more involved in organizational capacity-building efforts leading to an
+                            even greater emphasis on how I foster creative confidence and growth mindset within design
+                            teams.
+                        </p>
+                        <p>Currently at Kaiser Permanente, much of my work involves consulting and producing content
+                            for large-scale organizational change management and brand awareness initiatives. Designing
+                            for clinical staff, business professionals, and our patient community alike, I also build
+                            scalable training solutions and am exploring the ethical integration of artificial
+                            intelligence into the current culture of work. Prior to KP, I worked in higher
+                            education--both in formal institutions where I was involved in systematic program
+                            development and process improvement, and in agencies working with diverse clients to design
+                            bespoke digital learning experiences.
+                        </p>
+                        <p>I received an H.B.Sc. in Communication Theory and Human Biology, followed by a Master of
+                            Teaching degree and K-12 teacher certification from the University of Toronto. With a
+                            deeper focus on technologically-mediated learning, I then earned my M.A. in Learning Design
+                            & Technology from Stanford University. Concurrently while working in the field,
+                            I completed my Ed.D. in Educational Leadership at the University of Southern California.
+                            My doctoral research investigated the pragmatic and existential challenges of modern
+                            instructional design practice in corporate settings.</p>
+                        <p>I often say that I want learners to spend less time on the mechanics of learning and
+                            more on the substance of learning. In a landscape where online learning has become a staple
+                            among adult learners, the rigid "grammar" of traditional instructional design is often
+                            at odds with the behaviors and motivations of navigating today's online spaces. The ADDIE
+                            model still offers some usefulness in organizing high-level design priorities, but is
+                            impractical in isolation. To bridge this gap, my approach is to leverage insights from
+                            diverse domains, from game design and UI/UX to digital marketing and behavioral economics,
+                            to produce experiences that are authentic and relevant. At the same time, modern
+                            technologies like big data and artificial intelligence have enabled flexible workflows that
+                            meet contemporary digital realities.</p>
+                        <p>Outside of my work in education, I make music as a mainstage EDM artist and as a hip-hop
+                            producer for other artists. Even then, I often like to find opportunities to share
+                            educational content! I'm also a competitive saber fencer and coach, and I play a ton of
+                            Dance Dance Revolution.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="../scripts/mobile-menu.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const resumeBtn = document.querySelector('.resume-btn');
+            const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim();
+
+            if (resumeBtn) {
+                const hoverAnim = gsap.to(resumeBtn, {
+                    backgroundColor: accentColor,
+                    color: "#ffffff",
+                    scale: 1.04,
+                    y: -3,
+                    rotation: -1.5,
+                    transformOrigin: "center center",
+                    boxShadow: "0 12px 24px rgba(60, 0, 255, 0.2)",
+                    duration: 0.2,
+                    ease: "power2.out",
+                    paused: true
+                });
+
+                resumeBtn.addEventListener('mouseenter', () => hoverAnim.play());
+                resumeBtn.addEventListener('mouseleave', () => hoverAnim.reverse());
+            }
+
+            const tldrWrapper = document.getElementById('tldr-wrapper');
+            const tldrBody = document.getElementById('tldr-body');
+            const tldrCaret = document.getElementById('tldr-caret');
+            let tldrExpanded = false;
+            const collapsedWidth = tldrWrapper.offsetWidth;
+            gsap.set(tldrWrapper, { width: collapsedWidth });
+
+            tldrWrapper.addEventListener('click', () => {
+                if (!tldrExpanded) {
+                    tldrExpanded = true;
+                    gsap.set(tldrBody, { display: 'block', height: 0, overflow: 'hidden', opacity: 0 });
+                    gsap.to(tldrCaret, { rotation: 180, duration: 0.2, ease: 'power2.out' });
+                    gsap.to(tldrWrapper, {
+                        width: tldrWrapper.parentElement.offsetWidth, duration: 0.2, ease: 'power2.out',
+                        onComplete: () => {
+                            gsap.to(tldrBody, {
+                                height: 'auto', duration: 0.2, ease: 'power2.out',
+                                onComplete: () => {
+                                    gsap.set(tldrBody, { clearProps: 'height,overflow' });
+                                    gsap.to(tldrBody, { opacity: 1, duration: 0.2, ease: 'power2.out' });
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    tldrExpanded = false;
+                    gsap.to(tldrBody, {
+                        opacity: 0, duration: 0.1, ease: 'power2.in',
+                        onComplete: () => {
+                            gsap.set(tldrBody, { overflow: 'hidden' });
+                            gsap.to(tldrBody, {
+                                height: 0, duration: 0.15, ease: 'power2.in',
+                                onComplete: () => {
+                                    gsap.set(tldrBody, { display: 'none', clearProps: 'height,overflow,opacity' });
+                                    gsap.to(tldrWrapper, { width: collapsedWidth, duration: 0.15, ease: 'power2.in' });
+                                    gsap.to(tldrCaret, { rotation: 0, duration: 0.15, ease: 'power2.in' });
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

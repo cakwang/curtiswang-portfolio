@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ideas - Curtis Wang</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@100..900&display=swap">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="mobile-header" id="mobile-header">
+        <a href="../index.html" class="mobile-logo-link">
+            <img src="../assets/logo.png" alt="Curtis Wang" class="mobile-logo-img">
+        </a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="portfolio-logo">
+                <a href="../index.html">
+                    <img src="../assets/logo.png" alt="Curtis Wang Logo">
+                </a>
+            </div>
+            <h2><a href="about.html">About</a></h2>
+            <h2><a href="ideas.html">Ideas</a></h2>
+            <h2><a href="projects.html">Projects</a></h2>
+        </div>
+        <div class="footer">
+            <p>&copy; 2026 Curtis Wang</p>
+        </div>
+    </nav>
+
+    <main class="main-content ideas-page-wrapper">
+        <div class="header">
+            <h1>Ideas</h1>
+        </div>
+        <div class="ideas-layout">
+            <div class="ideas-toc">
+                <div class="ideas-filter">
+                    <span class="ideas-filter-tag" data-tag="Learning">Learning</span>
+                    <span class="ideas-filter-tag" data-tag="Design">Design</span>
+                    <span class="ideas-filter-tag" data-tag="Technology">Technology</span>
+                    <span class="ideas-filter-tag" data-tag="Business">Business</span>
+                    <span class="ideas-filter-tag" data-tag="General">General</span>
+                    <div class="ideas-filter-controls">
+                        <span id="filter-all" class="ideas-filter-control">All</span>
+                        <span class="ideas-filter-sep">|</span>
+                        <span id="filter-none" class="ideas-filter-control">None</span>
+                    </div>
+                </div>
+                <ul>
+                    <li data-tag="Technology"><a href="ideas/2026-05-15_learningtocode.html" target="ideas-frame">Would you teach your child to code?</a></li>
+                    <li data-tag="Technology"><a href="ideas/2025-12-03_gemini3.html" target="ideas-frame">Gemini 3.0</a></li>
+                    <li data-tag="Business"><a href="ideas/2025-06-24_chargingbythehour.html" target="ideas-frame">Charging by the hour punishes you for being an expert</a></li>
+                    <li data-tag="Design Learning Technology"><a href="ideas/2024-03-14_photoshop.html" target="ideas-frame">How to approach learning Photoshop as a newbie</a></li>
+                    <li data-tag="Business"><a href="ideas/2024-02-19_2x2.html" target="ideas-frame">Mental Model: The 2x2 matrix</a></li>
+                    <li data-tag="Business"><a href="ideas/2024-02-12_tell.html" target="ideas-frame">Don't just tell clients what you do</a></li>
+                    <li data-tag="General"><a href="ideas/2024-01-29_conversely.html" target="ideas-frame">Why I say "conversely" a lot</a></li>
+                    <li data-tag="Learning Business"><a href="ideas/2024-01-09_title.html" target="ideas-frame">Should we keep the "Instructional Designer" title?</a></li>
+                    <li data-tag="Business"><a href="ideas/2023-12-26_selling.html" target="ideas-frame">Sell without being salesy</a></li>
+                </ul>
+            </div>
+            <div class="ideas-viewer">
+                <iframe name="ideas-frame" title="Idea Viewer" src="ideas/placeholder.html"></iframe>
+            </div>
+        </div>
+    </main>
+
+    <script src="../scripts/mobile-menu.js"></script>
+    <script>
+        const pending = sessionStorage.getItem('ideas-load');
+        if (pending) {
+            sessionStorage.removeItem('ideas-load');
+            document.querySelector('iframe[name="ideas-frame"]').src = pending;
+        }
+
+        const filterTags = document.querySelectorAll('.ideas-filter-tag');
+        const tocItems = document.querySelectorAll('.ideas-toc li');
+
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                tag.classList.toggle('inactive');
+                applyFilter();
+            });
+        });
+
+        document.getElementById('filter-all').addEventListener('click', () => {
+            filterTags.forEach(t => t.classList.remove('inactive'));
+            applyFilter();
+        });
+
+        document.getElementById('filter-none').addEventListener('click', () => {
+            filterTags.forEach(t => t.classList.add('inactive'));
+            applyFilter();
+        });
+
+        function applyFilter() {
+            const active = [...filterTags]
+                .filter(t => !t.classList.contains('inactive'))
+                .map(t => t.dataset.tag);
+
+            tocItems.forEach(li => {
+                const itemTags = li.dataset.tag.split(' ');
+                li.classList.toggle('hidden', !itemTags.some(t => active.includes(t)));
+            });
+
+
+        }
+    </script>
+</body>
+</html>
