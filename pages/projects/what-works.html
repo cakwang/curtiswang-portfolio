@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Works? Promising Practices in International Development - Curtis Wang</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@100..900&display=swap">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tldr-box { background-color: #f2f2f2; border: 1px solid #b0b0b0; border-radius: 12px; padding: 20px 28px 24px; margin: 0 0 32px; }
+        .tldr-label { font-size: 12px; font-weight: 600; text-transform: lowercase; letter-spacing: 0.08em; color: var(--color-text-muted); display: block; margin-bottom: 12px; }
+        .tldr-box p { font-size: 17px; line-height: 1.65; color: var(--color-text); margin: 0; }
+        .project-sections-col .tldr-box + h2 { margin-top: 0; }
+
+        .gallery-group {
+            margin: 28px 0 36px;
+        }
+
+        .gallery-row {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            padding: 14px 0;
+        }
+
+        .gallery-thumb {
+            cursor: zoom-in;
+            flex: 0 0 auto;
+            margin: 0;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+
+        .gallery-thumb img {
+            width: 200px;
+            height: 125px;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.2s ease;
+        }
+
+        .gallery-thumb:hover img {
+            opacity: 0.8;
+        }
+
+        .project-sections-col .gallery-caption {
+            font-size: 12px;
+            line-height: 1.4;
+            color: var(--color-text-subtle);
+            text-align: center;
+            font-style: italic;
+            margin: 0 auto;
+            max-width: 75%;
+        }
+
+        .video-embed {
+            margin: 28px 0 36px;
+        }
+
+        .video-embed video {
+            width: 100%;
+            border-radius: 6px;
+            border: 1px solid var(--color-border);
+            display: block;
+        }
+
+        .video-embed .gallery-caption {
+            margin-top: 8px;
+        }
+
+        .lb-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.88);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lb-overlay.open {
+            display: flex;
+        }
+
+        .lb-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 88vw;
+        }
+
+        .lb-img {
+            max-width: 88vw;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 4px;
+            display: block;
+        }
+
+        .lb-caption {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 15px;
+            text-align: center;
+            margin-top: 12px;
+            max-width: 600px;
+            line-height: 1.4;
+        }
+
+        .lb-btn {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.12);
+            border: none;
+            color: #fff;
+            font-size: 36px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s;
+            z-index: 10000;
+        }
+
+        .lb-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        #lb-prev {
+            left: 20px;
+        }
+
+        #lb-next {
+            right: 20px;
+        }
+
+        .lb-close {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 10000;
+            line-height: 1;
+            padding: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mobile-header" id="mobile-header">
+        <a href="../../index.html" class="mobile-logo-link">
+            <img src="../../assets/logo.png" alt="Curtis Wang" class="mobile-logo-img">
+        </a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="portfolio-logo">
+                <a href="../../index.html">
+                    <img src="../../assets/logo.png" alt="Curtis Wang Logo">
+                </a>
+            </div>
+            <h2><a href="../about.html">About</a></h2>
+            <h2><a href="../ideas.html">Ideas</a></h2>
+            <h2><a href="../projects.html">Projects</a></h2>
+        </div>
+        <div class="footer">
+            <p>&copy; 2026 Curtis Wang</p>
+        </div>
+    </nav>
+    <main class="main-content">
+        <div class="project-hero">
+            <img src="what-works/_banner.jpg"
+                alt="What Works? Promising Practices in International Development">
+            <div class="project-intro">
+                <h1>What Works? Promising Practices in International Development</h1>
+            </div>
+        </div>
+        <div class="project-body">
+            <div class="project-meta-col">
+                <div class="project-meta-item project-meta-client">
+                    <div class="project-meta-value">Stanford University &amp; University of Oslo</div>
+                </div>
+                <div class="project-meta-item project-meta-location">
+                    <div class="project-meta-value">Stanford, CA / Oslo, Norway</div>
+                </div>
+                <div class="project-meta-item">
+                    <div class="project-meta-value">2015</div>
+                </div>
+                <div class="project-meta-item">
+                    <div class="project-tag-container">
+                        <p class="project-tag">Microcasting</p>
+                        <p class="project-tag">Multimedia Production</p>
+                        <p class="project-tag">Instructional Scaffolding</p>
+                    </div>
+                </div>
+                <div class="project-meta-link">
+                    <a href="https://www.globe.uio.no/english/sdg/studies/sum4026m/" target="_blank">View Project →</a>
+                </div>
+            </div>
+            <div class="project-sections-col">
+                <div class="tldr-box">
+                    <span class="tldr-label">tl;dr</span>
+                    <p>Norway's debut global MOOC brought together 14 international faculty members and special
+                        guests to deliver an optimistic, evidence-based primer on international development. Hosted
+                        on FutureLearn, the course countered standard industry dropout trends by achieving a 14%
+                        active learner retention rate through Week 6—more than triple the historical MOOC
+                        average—driven by nightly TA-facilitated discussion structures and targeted formative
+                        scaffolding.</p>
+                </div>
+                <h2>Problem &amp; Learner Context</h2>
+                <p>This initiative originated from a distinct pedagogical challenge identified by former students at the
+                    University of Oslo: academic coursework in international development routinely over-indexed on
+                    systemic failures, structural deprivation, and institutional shortcomings. This left students
+                    seeking reasons for optimism. To address this gap, the course was engineered to pivot the narrative
+                    toward an empirical examination of what policies and anti-poverty interventions actually yield
+                    positive societal results.</p>
+
+                <p>The curriculum was structured around five core pillars: General International Development; Growth and
+                    Poverty Reduction; Governance and Rule of Law; Global Health; and Aid &amp; International
+                    Cooperation. It represented the first global MOOC to feature faculty from the Global South as equal
+                    partners, integrating scholars from institutions in Africa and Asia alongside those from North
+                    America and Europe.</p>
+
+                <p>The course targeted a highly heterogeneous global audience, ultimately attracting thousands of
+                    registrants across more than 55 countries. Operating in an open-access space, the design framework
+                    had to plan for the typical attrition curves that characterize massive online learning environments.
+                    Rather than evaluating success through rigid certificate compliance metrics, the instructional
+                    strategy prioritized deep, voluntary social engagement and peer-to-peer knowledge sharing within the
+                    system boundaries.</p>
+
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="what-works/splash-1.png" alt="Course splash screen 1">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="what-works/splash-2.png" alt="Course splash screen 2">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="what-works/splash-3.png" alt="Course splash screen 3">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="what-works/splash-4.png" alt="Course splash screen 4">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="what-works/splash-5.png" alt="Course splash screen 5">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="what-works/splash-6.png" alt="Course splash screen 6">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="what-works/splash-7.png" alt="Course splash screen 7">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">Course splash screens distributed to the international learner audience across 55+ countries on the FutureLearn platform</p>
+                </div>
+
+                <h2>My Design Decisions &amp; Rationale</h2>
+                <p>This project operated under a cohesive, collaborative design partnership focused on high-depth
+                    implementation. While my design partner managed content expertise and direct liaison channels with
+                    global subject matter experts (SMEs), I executed the end-to-end multimedia production, technical
+                    framework integration, asset creation, and assessment structures.</p>
+
+                <div class="video-embed">
+                    <video controls>
+                        <source src="what-works/banik-intro.mp4" type="video/mp4">
+                    </video>
+                    <p class="gallery-caption">Course introduction video from lead instructor Ingrid Banik, establishing the course's optimistic, evidence-based framing for global learners</p>
+                </div>
+
+                <p>The course featured a prominent roster of 14 global instructors and special guests, including Francis
+                    Fukuyama, which required balancing high-density academic arguments with the cognitive load
+                    constraints of an online audience. To preserve the nuance of these world-class scholars while
+                    preventing cognitive overload, I acted as an editorial gatekeeper. I systematically structured over
+                    30 video lectures, scripting and editing them to rigorous technical and narrative standards. For
+                    highly complex domains, I built intentional instructional scaffolding into brief, focused video
+                    segments, ensuring introductory concepts were segregated from material requiring advanced prior
+                    knowledge. Additionally, I produced targeted video animations to clarify abstract concepts, which
+                    65% of surveyed participants cited as highly effective for their learning experience.</p>
+
+                <p>To foster active community formation on the FutureLearn platform, we rejected passive discussion
+                    strategies. Because online forum behaviors in early platforms frequently defaulted to unmoderated
+                    afterthoughts, we intentionally built direct content-to-forum routing pipelines. We deployed highly
+                    thematic, open-ended discussion prompts embedded directly into the weekly learning sequences,
+                    encouraging global learners to contextualize theoretical models against their regional experiences.
+                    To anchor these conversations and establish an active feedback loop, I managed a coordinated team of
+                    teaching assistants from both Stanford and Oslo who facilitated and grounded the forum threads every
+                    evening.</p>
+
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="what-works/logo.png" alt="What Works course logo">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">FutureLearn course branding and visual identity for the What Works MOOC</p>
+                </div>
+
+                <h2>Project Walkthrough &amp; Highlights</h2>
+                <p>To minimize navigation friction for a self-paced audience, the course utilized a structured,
+                    three-part linear cadence within the platform's step-based architecture. A lesson was considered
+                    complete only when a student traversed all three sequential touchpoints:</p>
+
+                <p><strong>Step 1: Domain Expert Video Lectures:</strong> Learners engaged with highly polished video
+                    lectures featuring the global faculty. These segments delivered core theories, animations, and
+                    historical case studies regarding agricultural production, literacy, and global health trends.</p>
+
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="what-works/slide-1.PNG" alt="Course lecture slide 1">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="what-works/slide-2.PNG" alt="Course lecture slide 2">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="what-works/slide-3.PNG" alt="Course lecture slide 3">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="what-works/slide-4.PNG" alt="Course lecture slide 4">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="what-works/slide-5.PNG" alt="Course lecture slide 5">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="what-works/slide-6.PNG" alt="Course lecture slide 6">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">Sample lecture slides from the video modules — delivering core theories, animations, and historical case studies across the five thematic pillars</p>
+                </div>
+
+                <p><strong>Step 2: Embedded Formative Checkpoints:</strong> Immediately following the video delivery,
+                    text-based lesson materials and formative questions were introduced. These summative learning
+                    questions and reflective activities forced learners to actively analyze and challenge their own
+                    biases regarding development aid before progressing.</p>
+
+                <p><strong>Step 3: Coordinated Discussion Steps:</strong> The final step in the sequence directed
+                    learners to dedicated discussion topics. Here, students interacted within localized comment
+                    ecosystems, acting as peer facilitators while TAs actively moderated entries nightly to maintain
+                    intellectual momentum.</p>
+
+                <h2>Results &amp; Evidence of Value</h2>
+                <p>Empirical performance data from platform metrics and post-course evaluative surveys validated the
+                    efficacy of the instructional framework and social engagement model:</p>
+
+                <ul>
+                    <li><strong>High-Depth Course Alignment:</strong> Post-course surveys demonstrated strong baseline
+                        satisfaction with the pedagogical density, with 75% of active students reporting that the
+                        instructional level of the course was "about right."</li>
+                    <li><strong>Efficient Learning Windows:</strong> Micro-content strategies proved highly effective
+                        for the professional and general audience; 56% of responding learners successfully completed
+                        their targeted online tasks within a highly efficient 30–60 minute weekly window.</li>
+                    <li><strong>Industry-Leading Retention Rates:</strong> The course successfully countered standard
+                        online decay curves. Platform analytics tracked 2,660 active learners in Week 1 and 374 active
+                        learners in Week 6. This represents a 14% sustained active participation rate—more than triple
+                        the historical 4% industry completion benchmark.</li>
+                    <li><strong>Robust Capstone Completion:</strong> The emphasis on community scaffolding yielded deep
+                        learner persistence, with 325 students successfully completing the rigorous final capstone step
+                        of the course, representing an exceptional 12.2% absolute completion rate.</li>
+                </ul>
+
+                <h2>Reflection &amp; Lessons Learned</h2>
+                <p>The project proved highly successful as an international launch pad for cross-continental digital
+                    learning, generating substantial media attention and establishing a positive collaboration model
+                    across Stanford University, SUM, and the production team. It demonstrated that a well-coordinated
+                    production pipeline can seamlessly deliver high-quality educational assets across different
+                    geographies.</p>
+
+                <p>However, an objective pedagogical analysis reveals areas for refinement: the course over-indexed on a
+                    traditional, one-way delivery model. Despite clean graphics, rigorous editing, and positive
+                    reception, the video components frequently defaulted to a standard lecture paradigm. Future
+                    iterations must move away from static content delivery and integrate creative video-production
+                    tactics—such as interactive situational framing and direct learner elicitation—to drive deeper
+                    initial relevance and disrupt passive viewing behaviors.</p>
+
+                <p>This project solidified a core mental model that guides my ongoing enterprise instructional design
+                    work: high production value is an accelerant, but it cannot compensate for opportunities to deepen
+                    active user reflection.</p>
+            </div>
+        </div>
+    </main>
+
+    <div class="lb-overlay" id="lb-overlay">
+        <button class="lb-close" id="lb-close">&times;</button>
+        <button class="lb-btn" id="lb-prev">&#8249;</button>
+        <div class="lb-content">
+            <img class="lb-img" id="lb-img" src="" alt="">
+            <p class="lb-caption" id="lb-caption"></p>
+        </div>
+        <button class="lb-btn" id="lb-next">&#8250;</button>
+    </div>
+
+    <script src="../../scripts/mobile-menu.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lightbox
+            const lbOverlay = document.getElementById('lb-overlay');
+            const lbImg = document.getElementById('lb-img');
+            const lbCaptionEl = document.getElementById('lb-caption');
+            let lbGallery = [], lbIdx = 0, lbCaption = '';
+
+            function lbOpen(gallery, idx, caption) {
+                lbGallery = gallery;
+                lbIdx = idx;
+                lbCaption = caption;
+                lbImg.src = gallery[idx].querySelector('img').src;
+                lbCaptionEl.textContent = caption;
+                document.getElementById('lb-prev').style.visibility = gallery.length > 1 ? '' : 'hidden';
+                document.getElementById('lb-next').style.visibility = gallery.length > 1 ? '' : 'hidden';
+                lbOverlay.classList.add('open');
+            }
+            function lbClose() { lbOverlay.classList.remove('open'); }
+            function lbGo(dir) {
+                lbIdx = (lbIdx + dir + lbGallery.length) % lbGallery.length;
+                lbImg.src = lbGallery[lbIdx].querySelector('img').src;
+            }
+
+            document.getElementById('lb-close').addEventListener('click', lbClose);
+            document.getElementById('lb-prev').addEventListener('click', () => lbGo(-1));
+            document.getElementById('lb-next').addEventListener('click', () => lbGo(1));
+            lbOverlay.addEventListener('click', e => { if (e.target === lbOverlay) lbClose(); });
+            document.addEventListener('keydown', e => {
+                if (!lbOverlay.classList.contains('open')) return;
+                if (e.key === 'ArrowLeft') lbGo(-1);
+                if (e.key === 'ArrowRight') lbGo(1);
+                if (e.key === 'Escape') lbClose();
+            });
+            document.querySelectorAll('.gallery-group').forEach(group => {
+                const caption = group.querySelector('.gallery-caption')?.textContent || '';
+                const thumbs = [...group.querySelectorAll('.gallery-thumb')];
+                thumbs.forEach((t, i) => t.addEventListener('click', () => lbOpen(thumbs, i, caption)));
+            });
+        });
+    </script>
+</body>
+
+</html>

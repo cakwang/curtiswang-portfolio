@@ -1,1 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camo: Photo Editing Coach - Curtis Wang</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@100..900&display=swap">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tldr-box { background-color: #f2f2f2; border: 1px solid #b0b0b0; border-radius: 12px; padding: 20px 28px 24px; margin: 0 0 32px; }
+        .tldr-label { font-size: 12px; font-weight: 600; text-transform: lowercase; letter-spacing: 0.08em; color: var(--color-text-muted); display: block; margin-bottom: 12px; }
+        .tldr-box p { font-size: 17px; line-height: 1.65; color: var(--color-text); margin: 0; }
+        .project-sections-col .tldr-box + h2 { margin-top: 0; }
+
+        .gallery-group { margin: 28px 0 36px; }
+        .gallery-row { display: flex; gap: 10px; justify-content: center; margin-bottom: 8px; flex-wrap: wrap; padding: 14px 0; }
+        .gallery-thumb { cursor: zoom-in; flex: 0 0 auto; margin: 0; border-radius: 6px; overflow: hidden; border: 1px solid var(--color-border); }
+        .gallery-thumb img { width: 200px; height: 125px; object-fit: cover; display: block; transition: opacity 0.2s ease; }
+        .gallery-thumb:hover img { opacity: 0.8; }
+        .project-sections-col .gallery-caption { font-size: 12px; line-height: 1.4; color: var(--color-text-subtle); text-align: center; font-style: italic; margin: 0 auto; max-width: 75%; }
+
+        .lb-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 9999; align-items: center; justify-content: center; }
+        .lb-overlay.open { display: flex; }
+        .lb-content { display: flex; flex-direction: column; align-items: center; max-width: 88vw; }
+        .lb-img { max-width: 88vw; max-height: 80vh; object-fit: contain; border-radius: 4px; display: block; }
+        .lb-caption { color: rgba(255,255,255,0.85); font-size: 15px; text-align: center; margin-top: 12px; max-width: 600px; line-height: 1.4; }
+        .lb-btn { position: fixed; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.12); border: none; color: #fff; font-size: 36px; width: 52px; height: 52px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; z-index: 10000; }
+        .lb-btn:hover { background: rgba(255,255,255,0.25); }
+        #lb-prev { left: 20px; }
+        #lb-next { right: 20px; }
+        .lb-close { position: fixed; top: 20px; right: 20px; background: none; border: none; color: #fff; font-size: 40px; cursor: pointer; z-index: 10000; line-height: 1; padding: 4px; }
+    </style>
+</head>
+
+<body>
+    <div class="mobile-header" id="mobile-header">
+        <a href="../../index.html" class="mobile-logo-link">
+            <img src="../../assets/logo.png" alt="Curtis Wang" class="mobile-logo-img">
+        </a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="portfolio-logo">
+                <a href="../../index.html">
+                    <img src="../../assets/logo.png" alt="Curtis Wang Logo">
+                </a>
+            </div>
+            <h2><a href="../about.html">About</a></h2>
+            <h2><a href="../ideas.html">Ideas</a></h2>
+            <h2><a href="../projects.html">Projects</a></h2>
+        </div>
+        <div class="footer">
+            <p>&copy; 2026 Curtis Wang</p>
+        </div>
+    </nav>
+    <main class="main-content">
+        <div class="project-hero">
+            <img src="camo/_banner.jpg" alt="Camo: Photo Editing Coach">
+            <div class="project-intro">
+                <h1>Camo: Photo Editing Coach</h1>
+            </div>
+        </div>
+        <div class="project-body">
+            <div class="project-meta-col">
+                <div class="project-meta-item project-meta-client">
+                    <div class="project-meta-value">Stanford University</div>
+                </div>
+                <div class="project-meta-item project-meta-location">
+                    <div class="project-meta-value">Stanford, CA</div>
+                </div>
+                <div class="project-meta-item">
+                    <div class="project-meta-value">2014</div>
+                </div>
+                <div class="project-meta-item">
+                    <div class="project-tag-container">
+                        <p class="project-tag">Just-in-Time Learning</p>
+                        <p class="project-tag">Ed-Tech Research</p>
+                        <p class="project-tag">UI/UX Design</p>
+                    </div>
+                </div>
+                <div class="project-meta-link">
+                    <a href="#" target="_blank">View Project →</a>
+                </div>
+            </div>
+            <div class="project-sections-col">
+                <div class="tldr-box">
+                    <span class="tldr-label">tl;dr</span>
+                    <p>An AI-powered photo editing app targeting the "DIY Perfectionist" — someone with creative ambition but intimidated by professional tools like Photoshop. Camo's coach analyzes a user's raw photo against professional references and suggests editing ranges rather than exact values, preserving creative agency while systematically building fluency. UI elements were deliberately designed to parallel Photoshop's interface patterns to reduce the re-learning cost when users eventually graduate to professional software.</p>
+                </div>
+                <h2>Problem &amp; Learner Context</h2>
+                <p>Amateur photographers face a persistent skills gap between the blunt simplicity of single-swipe
+                    filters and the overwhelming complexity of professional editing suites like Photoshop. Users who
+                    want greater creative control are too often intimidated by Photoshop's vast interface to ever
+                    develop genuine fluency — leaving them stranded between tools that are either too simple or too
+                    complex.</p>
+                <p>User research surfaced a recurring persona: the <strong>"DIY Perfectionist"</strong> — someone who
+                    feels a strong sense of creative ownership over their photos and insists on being in control of the
+                    editing process, but whose intimidation by complex tools actively stifles mastery. This tension
+                    drove several core design questions:</p>
+                <ul>
+                    <li>How might we make photo-editing welcoming to use and to learn from?</li>
+                    <li>How might we give the DIY Perfectionist the confidence and mastery to produce "flawless" photos?
+                    </li>
+                    <li>How might we get photo-editing software to anticipate the DIY Perfectionist's vision for
+                        "flawlessness"?</li>
+                    <li>How might we remove the sense of intimidation from the tool in one's pursuit of mastery?</li>
+                </ul>
+                <p>User interviews also revealed how personal and varied photography is as a practice. One user
+                    explained that she takes only 1–3 photos per day, each one intentional:</p>
+                <blockquote>"I don't want a photo of me in a museum, but me in the museum with a cup of coffee. Or an
+                    afternoon in Paris. Or a book. I look forward to showing my pictures to my family, but I'm only
+                    uploading my pictures to capture a bigger experience — then the raw process needs to be
+                    self-explanatory." — Anabel</blockquote>
+                <p>Another user took up to hundreds of photos a day, dedicating blocks of time to curate and sequence
+                    them into a visual narrative. Despite these differences in style, both users shared the same
+                    frustration: the tools available to them did not match their creative ambitions.</p>
+
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="camo/user-personas.jpg" alt="2×2 user persona map">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">2×2 user persona map — plotting research participants across editing intent and audience axes to isolate the target "DIY Perfectionist" quadrant</p>
+                </div>
+
+                <h2>My Design Decisions &amp; Rationale</h2>
+                <p>The defining design principle for Camo was to keep the intelligent coach in a <em>supporting</em>
+                    role — not as an instructor dictating a prescribed sequence of steps and exact adjustment values,
+                    which would strip the user of the very sense of control they most needed. Conventional interactive
+                    tutorials tend to guarantee a successful output at the cost of the user's creative agency. Camo's
+                    approach inverts this: the system offers multiple guided pathways and adjustment <em>ranges</em>,
+                    not targets, so the user retains creative judgment at every step.</p>
+                <p>This distinction between process-driven and product-driven design was central to format selection.
+                    The app format — an interactive tool the user actively controls — was the only viable vehicle for
+                    this philosophy. A static PDF, a video walkthrough, or a one-way tutorial would have replicated the
+                    same prescriptive dynamic Camo was designed to break.</p>
+                <p>Interface design choices were also deliberate: since Camo is intended as an intermediate tool before
+                    users graduate to Photoshop, many UI elements — workspace layout, visual indicators, panel
+                    organization — were designed to parallel those of professional-grade software. This reduces the
+                    cognitive re-learning cost when users eventually make the transition.</p>
+
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="camo/notes.jpg" alt="Design ideation spread with challenge framing and AI coaching flow">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="camo/wireframe-1.jpg" alt="Digital wireframe of the editing workspace">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">Design ideation spread — challenge framing, homepage layout sketch, and the full AI coaching decision-tree flow (left); digital wireframe of the editing workspace with reference panel, histogram comparisons, and Photoshop-parallel tool palette (right)</p>
+                </div>
+
+                <h2>Project Walkthrough &amp; Highlights</h2>
+                <p>Camo's core feature is an AI analysis engine that compares the user's raw image against a
+                    professionally edited reference photo and generates multiple guided editing pathways from which the
+                    user can choose. Rather than prescribing exact adjustment values, the system offers recommended
+                    ranges — preserving the user's creative latitude while ensuring the outcome stays within
+                    professional standards.</p>
+
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="camo/screen-1.jpg" alt="Reference selection screen">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">Reference selection — Camo surfaces professionally-edited versions of the user's same scene, tagged by photographer and scored by recommendation strength</p>
+                </div>
+
+                <p>Comparative visual feedback reinforces the learning loop: tools like histograms and
+                    light-distribution graphs display both the raw and reference images side by side, allowing the user
+                    to see their edits concretely and with interpretive depth. This encourages <em>thoughtful
+                        emulation</em> rather than copy-cat replication, sustaining the user's engagement as a growing
+                    editor rather than a passive follower of instructions.</p>
+
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="camo/screen-2.jpg" alt="Editing workspace — raw photo with histogram baseline">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="camo/screen-3.jpg" alt="Editing workspace — after Lighting adjustments">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">The editing loop — raw photo against the reference baseline (left) and after Lighting adjustments are applied (right), with the image shifting toward the warmer reference tone as histogram gaps narrow</p>
+                </div>
+
+                <h2>Proposed Evaluation Framework</h2>
+                <p>Because Camo was developed as an academic research prototype, it was not deployed to a live
+                    production environment for long-term data collection. Instead, its success is anchored in a
+                    rigorous, evidence-based evaluation framework designed to empirically measure structural learning
+                    progression and the systematic degradation of scaffolding in complex creative interfaces.</p>
+
+                <h3>1. Core Evaluation Criteria &amp; "Scaffold Fading"</h3>
+                <p>A common shortcoming of interactive instructional interventions is the permanence of support—the
+                    tools rarely provide a pathway for the learner to graduate into independent execution. Camo’s
+                    evaluation blueprint relies on a systematic, bit-by-bit fading of the AI coach's prompting. True
+                    mastery is operationalized through two primary behavioral metrics during this fading phase:</p>
+                <ul>
+                    <li><strong>Strategic Tool Selection vs. Regressive Backtracking:</strong> Learners are expected to
+                        reach for the correct professional adjustment tools with increasing precision. A reduction in UI
+                        backtracking serves as an indicator that the user is arriving at a desired visual outcome
+                        through premeditated strategic decision-making, rather than ignorant trial and error.</li>
+                    <li><strong>Execution Speed Stability:</strong> As visual overlays and range recommendations are
+                        incrementally removed, the framework tracks user editing and export speed. Maintaining a stable
+                        execution velocity during scaffold removal indicates that the interface's conceptual models have
+                        been successfully internalized by the user.</li>
+                </ul>
+
+                <h3>2. Methodological Tensions &amp; Critical Counterpoints</h3>
+                <p>An honest critique of this evaluation architecture reveals distinct operational and philosophical
+                    tensions that a formal study must account for. Rather than treating these factors as unaddressed
+                    blind spots, the framework actively incorporates them into the research design:</p>
+
+                <h4>The Paradox of Creative Serendipity</h4>
+                <p>In creative software engineering, trial and error is a fundamental component of the artistic process.
+                    The framework risks over-indexing on efficiency, potentially eliminating the "happy accidents" that
+                    drive stylistic discovery.
+                    <br><strong>Mitigation:</strong> The evaluation criteria must explicitly distinguish between
+                    <em>intentional experimentation</em> (purposeful testing of aesthetic boundaries) and <em>ignorant
+                        manipulation</em> (blind slider tweaking due to a lack of tool fluency). Camo’s metrics
+                    prioritize the reduction of the latter while preserving interface latitude for the former.
+                </p>
+
+                <h4>The Friction of "Desirable Difficulties"</h4>
+                <p>Expecting execution speed to remain entirely linear or stable during scaffold removal ignores basic
+                    cognitive load theory. Removing instructional support naturally introduces a temporary performance
+                    dip as the learner's brain takes over the heavy lifting.
+                    <br><strong>Mitigation:</strong> A drop-off in editing speed should not be flatly categorized as a
+                    learning failure; instead, it can indicate a "desirable difficulty" where the user slows down to
+                    deliberately engage with advanced editing nuances. Data collection models must pair telemetry logs
+                    with qualitative think-aloud protocols to map user intent directly to interface actions, ensuring
+                    the system does not mistake a deliberate, slower pace for a lack of mastery.</p>
+            </div>
+        </div>
+    </main>
+
+    <div class="lb-overlay" id="lb-overlay">
+        <button class="lb-close" id="lb-close">&times;</button>
+        <button class="lb-btn" id="lb-prev">&#8249;</button>
+        <div class="lb-content">
+            <img class="lb-img" id="lb-img" src="" alt="">
+            <p class="lb-caption" id="lb-caption"></p>
+        </div>
+        <button class="lb-btn" id="lb-next">&#8250;</button>
+    </div>
+
+    <script src="../../scripts/mobile-menu.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lbOverlay = document.getElementById('lb-overlay');
+            const lbImg = document.getElementById('lb-img');
+            const lbCaptionEl = document.getElementById('lb-caption');
+            let lbGallery = [], lbIdx = 0;
+
+            function lbOpen(gallery, idx, caption) {
+                lbGallery = gallery;
+                lbIdx = idx;
+                lbImg.src = gallery[idx].querySelector('img').src;
+                lbCaptionEl.textContent = caption;
+                document.getElementById('lb-prev').style.visibility = gallery.length > 1 ? '' : 'hidden';
+                document.getElementById('lb-next').style.visibility = gallery.length > 1 ? '' : 'hidden';
+                lbOverlay.classList.add('open');
+            }
+            function lbClose() { lbOverlay.classList.remove('open'); }
+            function lbGo(dir) {
+                lbIdx = (lbIdx + dir + lbGallery.length) % lbGallery.length;
+                lbImg.src = lbGallery[lbIdx].querySelector('img').src;
+            }
+
+            document.getElementById('lb-close').addEventListener('click', lbClose);
+            document.getElementById('lb-prev').addEventListener('click', () => lbGo(-1));
+            document.getElementById('lb-next').addEventListener('click', () => lbGo(1));
+            lbOverlay.addEventListener('click', e => { if (e.target === lbOverlay) lbClose(); });
+            document.addEventListener('keydown', e => {
+                if (!lbOverlay.classList.contains('open')) return;
+                if (e.key === 'ArrowLeft') lbGo(-1);
+                if (e.key === 'ArrowRight') lbGo(1);
+                if (e.key === 'Escape') lbClose();
+            });
+            document.querySelectorAll('.gallery-group').forEach(group => {
+                const caption = group.querySelector('.gallery-caption')?.textContent || '';
+                const thumbs = [...group.querySelectorAll('.gallery-thumb')];
+                thumbs.forEach((t, i) => t.addEventListener('click', () => lbOpen(thumbs, i, caption)));
+            });
+        });
+    </script>
+</body>
+
+</html>

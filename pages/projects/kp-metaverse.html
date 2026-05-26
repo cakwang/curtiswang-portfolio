@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KP Metaverse - Curtis Wang</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@100..900&display=swap">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tldr-box { background-color: #f2f2f2; border: 1px solid #b0b0b0; border-radius: 12px; padding: 20px 28px 24px; margin: 0 0 32px; }
+        .tldr-label { font-size: 12px; font-weight: 600; text-transform: lowercase; letter-spacing: 0.08em; color: var(--color-text-muted); display: block; margin-bottom: 12px; }
+        .tldr-box p { font-size: 17px; line-height: 1.65; color: var(--color-text); margin: 0; }
+        .project-sections-col .tldr-box + h2 { margin-top: 0; }
+    </style>
+</head>
+
+<body>
+    <div class="mobile-header" id="mobile-header">
+        <a href="../../index.html" class="mobile-logo-link">
+            <img src="../../assets/logo.png" alt="Curtis Wang" class="mobile-logo-img">
+        </a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="portfolio-logo">
+                <a href="../../index.html">
+                    <img src="../../assets/logo.png" alt="Curtis Wang Logo">
+                </a>
+            </div>
+            <h2><a href="../about.html">About</a></h2>
+            <h2><a href="../ideas.html">Ideas</a></h2>
+            <h2><a href="../projects.html">Projects</a></h2>
+        </div>
+        <div class="footer">
+            <p>&copy; 2026 Curtis Wang</p>
+        </div>
+    </nav>
+    <main class="main-content">
+        <div class="project-hero">
+            <img src="kp-metaverse/_banner.jpg" alt="KP Metaverse">
+            <div class="project-intro">
+                <h1>KP Metaverse</h1>
+            </div>
+        </div>
+        <div class="project-body">
+            <div class="project-meta-col">
+                <div class="project-meta-item project-meta-client">
+                    <div class="project-meta-value">Kaiser Permanente</div>
+                </div>
+                <div class="project-meta-item project-meta-location">
+                    <div class="project-meta-value">Los Angeles, CA</div>
+                </div>
+                <div class="project-meta-item">
+                    <div class="project-meta-value">2026</div>
+                </div>
+                <div class="project-meta-item">
+                    <div class="project-tag-container">
+                        <p class="project-tag">Corporate Training</p>
+                        <p class="project-tag">Immersive Tech</p>
+                        <p class="project-tag">Instructional Design</p>
+                    </div>
+                </div>
+                <div class="project-meta-link">
+                    <a href="#" target="_blank">View Project →</a>
+                </div>
+            </div>
+            <div class="project-sections-col">
+                <div class="tldr-box">
+                    <span class="tldr-label">tl;dr</span>
+                    <p>An Unreal Engine digital twin of a Kaiser Permanente facility, exploring whether high-fidelity 3D spatial simulation can replace flat compliance training. New hires virtually tour a photorealistic replica of their actual workplace — completing procedural wayfinding tasks instead of reading slides. A comparative pilot was proposed, benchmarking retention from this spatial medium against legacy modalities using Waste Disposal Compliance Training as the test case.</p>
+                </div>
+                <h2>Problem &amp; Learner Context</h2>
+                <p>Most instructional design initiatives begin by diagnosing an existing behavioral deficit. The
+                    <strong>KP Metaverse</strong> project represents a strategic exception: it is a technology-driven
+                    exploration designed to uncover the latent instructional possibilities of state-of-the-art tools
+                    typically confined to the entertainment industry, specifically Epic Games’ <strong>Unreal
+                        Engine</strong>.</p>
+
+                <p>The genesis of this project was partly motivated by an era when the "metaverse" had gained explosive
+                    mainstream popularity, rapidly becoming the technological "flavor of the month" across digital media
+                    and popular culture. Rather than dismissing the trend as mere hype, this project sought to evaluate
+                    its corporate utility: what doors would open if we bypassed standard, flat training staples and
+                    recreated entire physical medical offices and facilities from the ground up as open-ended, real-time
+                    3D environments?</p>
+
+                <p>Traditional enterprise learning assets—such as static PDFs, slide-based compliance courses, and flat
+                    web modules—are perfectly adequate for dispensing explicit content knowledge. However, they
+                    completely fail to account for <strong>physical 3D spaces</strong> and <strong>real-time, time-based
+                        procedural workflows</strong>. Leaving this gap unaddressed means relying on high-friction,
+                    real-world facility orientations or abstracting spatial workflows into text-heavy modules that
+                    suffer from low long-term retention. Initially designed as a flexible proof-of-concept, the primary
+                    target use cases focus on enterprise onboarding (allowing new hires to virtually tour facilities
+                    ahead of time) and member-facing wayfinding (helping patients visualize and navigate complex clinics
+                    prior to high-stress appointments).</p>
+
+                <h2>My Design Decisions &amp; Rationale</h2>
+                <p>The decision to utilize Unreal Engine over standard authoring tools was driven entirely by the
+                    specific affordances of the technology—namely, the ability to project a user's entire presence into
+                    a high-fidelity virtual world to bolster 3D spatial awareness. However, deploying video game
+                    mechanics within a diverse corporate workforce introduces a major strategic challenge: the massive
+                    variance in digital literacy. Controlling a 3D avatar requires a specific "gaming grammar" (such as
+                    using WASD keyboard keys in conjunction with mouse camera manipulation) that is instinctual to
+                    active gamers but a jarring friction point for non-gamers.</p>
+
+                <p>To bridge this intuition gap without diluting the power of the medium, the design implements an
+                    intentional <strong>player onboarding framework</strong>. Rather than overwhelming users with
+                    abstract text descriptions or hidden controller inputs, the system utilizes low-stakes, highly
+                    contextualized "side quests" that build fundamental 3D literacy through relatable corporate
+                    activities:</p>
+                <ul>
+                    <li>Learning how to walk around a localized physical corner.</li>
+                    <li>Navigating a character from the bottom of a stairwell into a building lobby.</li>
+                    <li>Locating a specific assigned cubicle within an office floor plan floor layout.</li>
+                </ul>
+
+                <h2>Project Walkthrough &amp; Highlights</h2>
+                <p>To showcase the spatial accuracy and visual fidelity of the simulation, the final user interface
+                    incorporates an interactive slider widget. Hiring managers can drag the slider left and right to see
+                    a direct, identical-angle comparison between a real-life photograph of a Kaiser Permanente facility
+                    and its digital twin rendered inside Unreal Engine.</p>
+
+                <p>Furthermore, to prevent the virtual world from feeling distilled or contrived, the simulation maps
+                    minute, granular operational realities into the environment. The walkthrough highlights recurring,
+                    culturally relatable Non-Player Character (NPC) behaviors and environmental obstacles, such as an
+                    NPC queue waiting to purchase coffee at the lobby Starbucks counter, and a mandatory badge-swipe
+                    interaction required to open the main entrance security turnstiles. The closer the simulation
+                    adheres to real-life friction and processes, the more grounded and authentic the learning experience
+                    becomes.</p>
+
+                <h2>Results &amp; Evidence of Value</h2>
+                <p>Because this project is in an early, exploratory proof-of-concept stage, tracking standard
+                    quantitative data like broad completion metrics would be premature. Instead, the business case and
+                    value proposition are established through a proposed <strong>comparative pilot framework</strong>
+                    targeted at a notoriously dry corporate requirement: <em>Waste Disposal Compliance Training</em>.
+                </p>
+
+                <p>Traditionally, teaching staff to differentiate between and locate disposal sites for general waste,
+                    recycling, biohazardous materials, battery disposal, sharps, and confidential documents is managed
+                    via verbose, slide-based compliance courses. Retention is historically low because the content is
+                    divorced from physical context. This pilot framework explicitly measures the impact of the
+                    simulation against legacy modalities:</p>
+
+                <table style="width:100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 15px;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--text-color, #000); text-align: left;">
+                            <th style="padding: 10px;">Metric</th>
+                            <th style="padding: 10px;">Legacy Slide-Based Modality</th>
+                            <th style="padding: 10px;">KP Metaverse Simulation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #ccc;">
+                            <td style="padding: 10px;"><strong>Instructional Approach</strong></td>
+                            <td style="padding: 10px;">Linear, text-heavy slides showing asset types and lists.</td>
+                            <td style="padding: 10px;">Spatial positioning of assets within a 3D digital twin of the
+                                employee's actual clinic.</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ccc;">
+                            <td style="padding: 10px;"><strong>Engagement Theory</strong></td>
+                            <td style="padding: 10px;">Passive consumption driven by extrinsic completion requirements.
+                            </td>
+                            <td style="padding: 10px;">Active persistence driven by spatial gamification and behavioral
+                                simulation.</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ccc;">
+                            <td style="padding: 10px;"><strong>Hypothesized Outcome</strong></td>
+                            <td style="padding: 10px;">Low long-term situational recall; higher operational error rates.
+                            </td>
+                            <td style="padding: 10px;">"Sticky" long-term procedural retention and reduced real-world
+                                disposal errors.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>By deploying rapid qualitative questionnaires and post-simulation interviews during this targeted
+                    compliance pilot, the project aims to generate concrete, short-term data. This localized evidence
+                    will serve as the necessary stepping stone to demonstrate the self-evident benefits of Unreal Engine
+                    to senior leadership, clearing the path for more ambitious, large-scale immersive learning
+                    pipelines.</p>
+
+                <h2>Reflection &amp; Lessons Learned</h2>
+                <p>As an active, evolving work-in-progress, long-term success depends on continuously evaluating
+                    high-level systemic challenges. The project blueprint actively tracks four open-ended considerations
+                    to guide future iterations:</p>
+                <ul>
+                    <li><strong>The Scalability &amp; Asset Pipeline Bottleneck:</strong> Recreating physical facilities
+                        from scratch provides unmatched visual fidelity but carries significant developer overhead.
+                        <em>Future Focus:</em> Establishing a sustainable asset pipeline that can automate environment
+                        creation by ingesting existing architectural CAD or BIM (Building Information Modeling) data,
+                        minimizing manual 3D modeling.</li>
+                    <li><strong>The "Gaming Grammar" Friction Point:</strong> While custom contextual tutorials mitigate
+                        initial confusion, some users may continue to struggle with 3D avatar controls. <em>Future
+                            Focus:</em> Determining the threshold where control friction overrides instructional value,
+                        and developing alternative, ultra-simplified inputs (like a point-and-click navigation
+                        alternative) to maximize accessibility.</li>
+                    <li><strong>The Fidelity vs. Accessibility Trade-off:</strong> Unreal Engine’s cutting-edge
+                        rendering requires robust local graphic processors (GPUs) rarely found on standard corporate
+                        laptops. <em>Future Focus:</em> Navigating the infrastructure deployment architecture, weighing
+                        the costs of cloud-based Pixel Streaming against porting the project to a web-native framework
+                        that sacrifices visual polish for universal enterprise access.</li>
+                    <li><strong>Isolating Spatial Affordances from Novelty Effects:</strong> Initial pilot testing often
+                        yields high engagement scores simply because the medium is novel to corporate learners.
+                        <em>Future Focus:</em> Designing longitudinal evaluation metrics that track learner performance
+                        months after exposure to prove that retention gains stem directly from the 3D spatial
+                        architecture rather than a temporary "novelty effect."</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <script src="../../scripts/mobile-menu.js"></script>
+</body>
+
+</html>

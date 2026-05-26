@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lagunita Learning Analytics Dashboard - Curtis Wang</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@100..900&display=swap">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tldr-box { background-color: #f2f2f2; border: 1px solid #b0b0b0; border-radius: 12px; padding: 20px 28px 24px; margin: 0 0 32px; }
+        .tldr-label { font-size: 12px; font-weight: 600; text-transform: lowercase; letter-spacing: 0.08em; color: var(--color-text-muted); display: block; margin-bottom: 12px; }
+        .tldr-box p { font-size: 17px; line-height: 1.65; color: var(--color-text); margin: 0; }
+        .project-sections-col .tldr-box + h2 { margin-top: 0; }
+
+        .gallery-group { margin: 28px 0 36px; }
+        .gallery-row { display: flex; gap: 10px; justify-content: center; margin-bottom: 8px; flex-wrap: wrap; padding: 14px 0; }
+        .gallery-thumb { cursor: zoom-in; flex: 0 0 auto; margin: 0; border-radius: 6px; overflow: hidden; border: 1px solid var(--color-border); }
+        .gallery-thumb img { width: 200px; height: 125px; object-fit: cover; display: block; transition: opacity 0.2s ease; }
+        .gallery-thumb:hover img { opacity: 0.8; }
+        .project-sections-col .gallery-caption { font-size: 12px; line-height: 1.4; color: var(--color-text-subtle); text-align: center; font-style: italic; margin: 0 auto; max-width: 75%; }
+
+        .lb-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 9999; align-items: center; justify-content: center; }
+        .lb-overlay.open { display: flex; }
+        .lb-content { display: flex; flex-direction: column; align-items: center; max-width: 88vw; }
+        .lb-img { max-width: 88vw; max-height: 80vh; object-fit: contain; border-radius: 4px; display: block; }
+        .lb-caption { color: rgba(255,255,255,0.85); font-size: 15px; text-align: center; margin-top: 12px; max-width: 600px; line-height: 1.4; }
+        .lb-btn { position: fixed; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.12); border: none; color: #fff; font-size: 36px; width: 52px; height: 52px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; z-index: 10000; }
+        .lb-btn:hover { background: rgba(255,255,255,0.25); }
+        #lb-prev { left: 20px; }
+        #lb-next { right: 20px; }
+        .lb-close { position: fixed; top: 20px; right: 20px; background: none; border: none; color: #fff; font-size: 40px; cursor: pointer; z-index: 10000; line-height: 1; padding: 4px; }
+    </style>
+</head>
+
+<body>
+    <div class="mobile-header" id="mobile-header">
+        <a href="../../index.html" class="mobile-logo-link">
+            <img src="../../assets/logo.png" alt="Curtis Wang" class="mobile-logo-img">
+        </a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="portfolio-logo">
+                <a href="../../index.html">
+                    <img src="../../assets/logo.png" alt="Curtis Wang Logo">
+                </a>
+            </div>
+            <h2><a href="../about.html">About</a></h2>
+            <h2><a href="../ideas.html">Ideas</a></h2>
+            <h2><a href="../projects.html">Projects</a></h2>
+        </div>
+        <div class="footer">
+            <p>&copy; 2026 Curtis Wang</p>
+        </div>
+    </nav>
+    <main class="main-content">
+        <div class="project-hero">
+            <img src="open-learning-initiative-dashboard/_banner.jpg" alt="Open Learning Initiative Learner Analytics Dashboard">
+            <div class="project-intro">
+                <h1>Open Learning Initiative Learner Analytics Dashboard</h1>
+            </div>
+        </div>
+        <div class="project-body">
+            <div class="project-meta-col">
+                <div class="project-meta-item project-meta-client">
+                    <div class="project-meta-value">Carnegie Mellon University</div>
+                </div>
+                <div class="project-meta-item project-meta-location">
+                    <div class="project-meta-value">Pittsburgh, PA</div>
+                </div>
+                <div class="project-meta-item">
+                    <div class="project-meta-value">2013</div>
+                </div>
+                <div class="project-meta-item">
+                    <div class="project-tag-container">
+                        <p class="project-tag">Learning Analytics</p>
+                        <p class="project-tag">Dashboard Design</p>
+                        <p class="project-tag">UI/UX Design</p>
+                    </div>
+                </div>
+                <div class="project-meta-link">
+                    <a href="#" target="_blank">View Project →</a>
+                </div>
+            </div>
+            <div class="project-sections-col">
+                <div class="tldr-box">
+                    <span class="tldr-label">tl;dr</span>
+                    <p>A predictive learning analytics dashboard for Carnegie Mellon's Open Learning Initiative, translating raw clickstream telemetry into a four-state visual mastery map (Mastered / Somewhat Mastered / Struggling / Insufficient Data). The redesign replaced dense data tables with a progressive-disclosure interface spanning four drill-down levels — from cohort summary to individual question distractor breakdown — giving faculty real-time diagnostic clarity to intervene before misconceptions hardened.</p>
+                </div>
+                <h2>Problem &amp; Learner Context</h2>
+                <p>Faculty in large-scale higher education environments historically taught "blindly". They regularly relied upon retroactive assessments—such as midterms and scheduled finals—to discover where student cohorts were experiencing failure. Instructors lacked direct, real-time visibility into immediate student understanding, preventing them from modifying curriculum or addressing critical misconceptions before they hardened into permanent conceptual blocks. Concurrently, students in high-stakes gatekeeper foundational tracks faced passive, lecture-heavy spaces characterized by completely broken academic feedback loops, driving systemic stagnation, low engagement, and higher historical attrition rates.</p>
+                <p>The core target users are university and community college faculty members juggling extensive student cohorts across multiple institutional tiers. These educators operate under profound time limitations and heavy cognitive loads. They do not possess the bandwidth to manually extract or manually compile thousands of disparate student application mouse-clicks, trace problem-solving step sequences, or build independent evaluation matrices to diagnose learning states before stepping into their next live lecture session. Leaving this optimization gap unaddressed severely damages institutional efficacy, drives up delivery costs, prolongs time-to-degree completion metrics, and risks systemic student dropouts in foundational STEM and core prerequisites.</p>
+
+                <h2>My Design Decisions &amp; Rationale</h2>
+                <p>The system architecture prioritized a fluid, web-based predictive learning analytics dashboard interface designed specifically to override static document reporting paradigms. The system systematically converts complex clickstream telemetry into an immediate visual predictive matrix explicitly mapped to targeted learning milestones. Joining the platform engineering cycle after foundational learning science protocols were established shifted the operational scope away from speculative discovery toward targeted design translation. The core design challenge required honoring the strict validation parameters of Dr. Thille's multi-layered cognitive tracking structures and baseline domain expert skill maps, while simultaneously reimagining the visual execution to alleviate intense user decision fatigue.</p>
+                <p>Evaluating historical design states revealed a problematic reliance on dense, text-heavy data dumps that loaded significant analytical strain onto instructors. To systematically resolve these friction points, the interface text reports were cleared in favor of structured graphical modules. Lower-level system metrics were intentionally sequestered beneath progressive disclosure paths, hiding low-level granular metrics from users until they deliberately clicked to drill down. Furthermore, the data visualization service was streamlined to tightly align with the system's underlying Hidden Markov Model (HMM) output states, transforming disjointed student grades into four clean, predictive mastery state categories: Green (Mastered), Yellow (Somewhat Mastered), Red (Unlearned/Struggling), and Gray (Insufficient Data).</p>
+
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="open-learning-initiative-dashboard/old-version.png" alt="Legacy OLI dashboard">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">The legacy OLI dashboard — dense text rows, mixed-color progress bars, and bottom-panel link dumps that buried diagnostic signal in analytical noise</p>
+                </div>
+
+                <p>Finally, raw user response sets were previously commingled into a single reporting channel, muddying student progress evaluation. The modernization split user outputs by unique assignment configurations, ensuring that instructors could instantly differentiate between safe spaces where students were allowed to make mistakes (with active scaffolding, hints, and "Learn by Doing" items) versus higher-stakes summative assessments ("Checkpoints") that accurately reflected independent mastery.</p>
+
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="open-learning-initiative-dashboard/wireframe-01.png" alt="Redesign wireframe — cohort mastery view">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="open-learning-initiative-dashboard/wireframe-02.png" alt="Redesign wireframe — individual student view">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">Redesign wireframes — Learning Objective cards with expandable sub-objective rows for the full cohort (left) and the same layout switching to a named individual student's skill-by-skill mastery breakdown with percentage scores (right)</p>
+                </div>
+
+                <h2>Project Walkthrough &amp; Highlights</h2>
+                <p>The dashboard layout maps user paths through a responsive framework built on systematic progressive disclosure, taking users smoothly from high-level cohort tracking down to microscopic performance telemetry. Upon initial platform authentication (Level 1: Course Summary), educators encounter a clean, macro-level dashboard summary showing active running modules, collective progression checkmarks, and overall course timeline status across distinct student groups. This high-level structural entry screen cleanly isolates global behavioral trends before loading individual classroom records. Engaging an active module group transitions the user directly into an interactive vertical branch layout (Level 2: The Structured Module Tree). Instructors seamlessly expand nodes to step vertically downwards from Course, to Unit, to Module, to Learning Objective, and finally down to Component Skill. This vertical accordion architecture perfectly mirrors the underlying domain-expert skills mapping spreadsheet, helping educators instantly visualize the curricular lineage connecting atomic tasks to broad core competencies.</p>
+
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="open-learning-initiative-dashboard/mockup-01.png" alt="Module Learning Objectives grid — Level 2">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="open-learning-initiative-dashboard/mockup-02.png" alt="Module Summary panel with performance chart and notifications — Level 1 expanded">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">Level 2 — Module Learning Objectives grid with color-coded HMM mastery charts per objective (left); Level 1 expanded — Module Summary panel showing the cohort performance distribution and an auto-generated notification feed flagging at-risk students and ambiguous content (right)</p>
+                </div>
+
+                <p>Isolating a distinct target objective surfaces an explicit tracking window fueled directly by real-time learner event logs (Level 3: Learning Objective Detail). The primary visual block uses horizontal distribution bars driven by the backend HMM predictive states to reveal the exact absolute volume of students tracking across individual competency phases. Expanding an objective entry surfaces granular sub-skills, allowing an instructor to note if a class-wide roadblock is tied exclusively to a narrow sub-skill like estimating the r-value. High-risk learners requiring immediate intervention and unlogged profiles lacking statistical footprint are instantly isolated. The baseline interface tier connects educators directly to individual question strings (Level 4: Micro Problems Grid &amp; Assessment Audit). Instructors audit selected metrics through an integrated grid layout filtered by exercise type. Selecting an analytical node displays the identical visual challenge, problem prompts, and scatterplots presented to students, rendering an accurate option-by-option distribution breakdown. Instead of basic pass/fail tallies, the layout exposes exactly how many students selected specific distractor variants or fell for common misconceptions, empowering the educator to build targeted corrective strategies ahead of their next live lecture.</p>
+
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="open-learning-initiative-dashboard/mockup-03.png" alt="Learning Objective detail with question distractor breakdown — Levels 3–4">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">Levels 3–4 — Learning Objective detail with sub-objectives expanded; a selected question renders the full prompt with an option-by-option response distribution, exposing exactly which distractor students chose and at what rate</p>
+                </div>
+
+                <h2>Results &amp; Evidence of Value</h2>
+                <p>A crucial conceptual and analytical leap involved transforming the foundational architecture of the student competency bars. In prior iterations, visual rows scaled to an identical uniform horizontal width regardless of class composition; the color blocks inside the row communicated the strict percentage proportion of a class cohort in that state. The updated dashboard re-architected these anchors so that the bars more clearly reflect absolute numerical count values, making within-cohort volume evaluations immediate and allowing effortless apples-to-apples comparisons across a given class.</p>
+                <p>This optimization introduced a calculated design trade-off: instructors lost a rigid, consistent sense of how much of a visual bar represented precisely 100% or any given fractional portion of the class. However, evaluating the interface through an instructional lens revealed that this pivot was far more meaningful for active teachers. While a percentage-driven visualization remains highly useful for the backend data analytics team to track macro-population trends across the country, live classroom instructors need to immediately grasp the absolute physical volume of students blocked at a given node to plan immediate logistical resources and class triage.</p>
+
+                <h2>Reflection &amp; Lessons Learned</h2>
+                <p>To guard against user friction during high-stress instruction prep, the user flow blueprint focused directly on speed, navigation clarity, and rapid view adjustment. Designers built clean navigation pathways to let instructors segment and isolate distinct learner sub-cohorts, mastery subtypes, or high-risk student clusters with minimal clicks. Moving between alternate learning targets or shifting from high-level outcome summaries down to discrete exercise inputs registers as a fluid pivot.</p>
+                <p>Eradicating data-loading lags and complex menu pathways allowed the interface to successfully map to user behaviors, enabling educators to filter and parse statistical insights exactly as fast as their internal desire to compare data variables arises. Ultimately, the project highlighted the profound importance of designing user experiences that don't just dump raw analytics data onto users, but actively translate advanced statistical predictive frameworks into fluid, responsive classroom diagnostic tools.</p>
+            </div>
+        </div>
+    </main>
+
+    <div class="lb-overlay" id="lb-overlay">
+        <button class="lb-close" id="lb-close">&times;</button>
+        <button class="lb-btn" id="lb-prev">&#8249;</button>
+        <div class="lb-content">
+            <img class="lb-img" id="lb-img" src="" alt="">
+            <p class="lb-caption" id="lb-caption"></p>
+        </div>
+        <button class="lb-btn" id="lb-next">&#8250;</button>
+    </div>
+
+    <script src="../../scripts/mobile-menu.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lbOverlay = document.getElementById('lb-overlay');
+            const lbImg = document.getElementById('lb-img');
+            const lbCaptionEl = document.getElementById('lb-caption');
+            let lbGallery = [], lbIdx = 0;
+
+            function lbOpen(gallery, idx, caption) {
+                lbGallery = gallery;
+                lbIdx = idx;
+                lbImg.src = gallery[idx].querySelector('img').src;
+                lbCaptionEl.textContent = caption;
+                document.getElementById('lb-prev').style.visibility = gallery.length > 1 ? '' : 'hidden';
+                document.getElementById('lb-next').style.visibility = gallery.length > 1 ? '' : 'hidden';
+                lbOverlay.classList.add('open');
+            }
+            function lbClose() { lbOverlay.classList.remove('open'); }
+            function lbGo(dir) {
+                lbIdx = (lbIdx + dir + lbGallery.length) % lbGallery.length;
+                lbImg.src = lbGallery[lbIdx].querySelector('img').src;
+            }
+
+            document.getElementById('lb-close').addEventListener('click', lbClose);
+            document.getElementById('lb-prev').addEventListener('click', () => lbGo(-1));
+            document.getElementById('lb-next').addEventListener('click', () => lbGo(1));
+            lbOverlay.addEventListener('click', e => { if (e.target === lbOverlay) lbClose(); });
+            document.addEventListener('keydown', e => {
+                if (!lbOverlay.classList.contains('open')) return;
+                if (e.key === 'ArrowLeft') lbGo(-1);
+                if (e.key === 'ArrowRight') lbGo(1);
+                if (e.key === 'Escape') lbClose();
+            });
+            document.querySelectorAll('.gallery-group').forEach(group => {
+                const caption = group.querySelector('.gallery-caption')?.textContent || '';
+                const thumbs = [...group.querySelectorAll('.gallery-thumb')];
+                thumbs.forEach((t, i) => t.addEventListener('click', () => lbOpen(thumbs, i, caption)));
+            });
+        });
+    </script>
+</body>
+
+</html>

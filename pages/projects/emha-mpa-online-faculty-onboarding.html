@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated Onboarding for Online Faculty - Curtis Wang</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@100..900&display=swap">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tldr-box { background-color: #f2f2f2; border: 1px solid #b0b0b0; border-radius: 12px; padding: 20px 28px 24px; margin: 0 0 32px; }
+        .tldr-label { font-size: 12px; font-weight: 600; text-transform: lowercase; letter-spacing: 0.08em; color: var(--color-text-muted); display: block; margin-bottom: 12px; }
+        .tldr-box p { font-size: 17px; line-height: 1.65; color: var(--color-text); margin: 0; }
+        .project-sections-col .tldr-box + h2 { margin-top: 0; }
+
+        .gallery-group {
+            margin: 28px 0 36px;
+        }
+
+        .gallery-row {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 8px;
+            flex-wrap: nowrap;
+            padding: 14px 0;
+        }
+
+        .gallery-thumb {
+            cursor: zoom-in;
+            flex: 0 0 auto;
+            margin: 0;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+
+        .gallery-thumb img {
+            width: 200px;
+            height: 125px;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.2s ease;
+        }
+
+        .gallery-thumb:hover img {
+            opacity: 0.8;
+        }
+
+        .project-sections-col .gallery-caption {
+            font-size: 12px;
+            line-height: 1.4;
+            color: var(--color-text-subtle);
+            text-align: center;
+            font-style: italic;
+            margin: 0 auto;
+            max-width: 75%;
+        }
+
+        .lb-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.88);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lb-overlay.open {
+            display: flex;
+        }
+
+        .lb-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 88vw;
+        }
+
+        .lb-img {
+            max-width: 88vw;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 4px;
+            display: block;
+        }
+
+        .lb-caption {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 15px;
+            text-align: center;
+            margin-top: 12px;
+            max-width: 600px;
+            line-height: 1.4;
+        }
+
+        .lb-btn {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.12);
+            border: none;
+            color: #fff;
+            font-size: 36px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s;
+            z-index: 10000;
+        }
+
+        .lb-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        #lb-prev {
+            left: 20px;
+        }
+
+        #lb-next {
+            right: 20px;
+        }
+
+        .lb-close {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 10000;
+            line-height: 1;
+            padding: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-row { flex-wrap: wrap; }
+            .gallery-thumb img { width: 160px; height: 100px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mobile-header" id="mobile-header">
+        <a href="../../index.html" class="mobile-logo-link">
+            <img src="../../assets/logo.png" alt="Curtis Wang" class="mobile-logo-img">
+        </a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="portfolio-logo">
+                <a href="../../index.html">
+                    <img src="../../assets/logo.png" alt="Curtis Wang Logo">
+                </a>
+            </div>
+            <h2><a href="../about.html">About</a></h2>
+            <h2><a href="../ideas.html">Ideas</a></h2>
+            <h2><a href="../projects.html">Projects</a></h2>
+        </div>
+        <div class="footer">
+            <p>&copy; 2026 Curtis Wang</p>
+        </div>
+    </nav>
+    <main class="main-content">
+        <div class="project-hero">
+            <img src="emha-mpa-online-faculty-onboarding/_banner.jpg" alt="EMHA & MPA Online Faculty Onboarding">
+            <div class="project-intro">
+                <h1>EMHA & MPA Online Faculty Onboarding</h1>
+            </div>
+        </div>
+        <div class="project-body">
+            <div class="project-meta-col">
+                <div class="project-meta-item project-meta-client">
+                    <div class="project-meta-value">University of Southern California</div>
+                </div>
+                <div class="project-meta-item project-meta-location">
+                    <div class="project-meta-value">Los Angeles, CA</div>
+                </div>
+                <div class="project-meta-item">
+                    <div class="project-meta-value">2018</div>
+                </div>
+                <div class="project-meta-item">
+                    <div class="project-tag-container">
+                        <p class="project-tag">Learning Experience Design</p>
+                        <p class="project-tag">Systems Design</p>
+                    </div>
+                </div>
+                <div class="project-meta-link">
+                    <a href="#" target="_blank">View Project →</a>
+                </div>
+            </div>
+            <div class="project-sections-col">
+                <div class="tldr-box">
+                    <span class="tldr-label">tl;dr</span>
+                    <p>A HubSpot-powered automated onboarding portal that consolidated USC Price School's
+                        fragmented, multi-office adjunct faculty onboarding into one adaptive experience.
+                        Self-reported confidence ratings after each module triggered personalized follow-up
+                        workflows — from curated resource bundles to one-on-one meeting invitations — without any
+                        manual staff monitoring. First-day technical support tickets dropped dramatically, and
+                        faculty explicitly praised the system for respecting their time.</p>
+                </div>
+                <h2>Problem &amp; Learner Context</h2>
+                <p>Each year, a dozen new adjunct faculty join USC Price's online graduate programs — typically with
+                    limited experience teaching in a fully asynchronous environment. Without the social scaffolding of a
+                    physical campus, these instructors were left to navigate a fragmented and often isolating onboarding
+                    process largely on their own. Three distinct problems characterized the status quo.</p>
+                <p><strong>Isolation.</strong> New instructors had little more than a few preliminary phone calls with
+                    HR and the Program Coordinator, plus functional emails walking through access procedures. The
+                    standing invitation to "reach out if you have any questions" added to the burden by forcing
+                    instructors to self-diagnose whether they were genuinely stuck or had simply overlooked an
+                    instruction. Those who were already confident self-starters had an outsized advantage over those who
+                    weren't.</p>
+                <p><strong>Fragmentation.</strong> Different offices at USC Price managed different onboarding tasks —
+                    compliance trainings, email setup, LMS orientation, course content access — with little awareness of
+                    each other's requirements. One office might push outdated instructions after a tool update; another
+                    might repeat requirements an instructor had already completed. The instructor bore the greatest
+                    burden of coordination, with no consolidated view of their own progress.</p>
+                <p><strong>One-size-fits-all training.</strong> Two hour-long sessions on Moodle and Adobe Connect were
+                    required of all new faculty two weeks before the semester. Most content was not targeted to each
+                    instructor's actual comfort level or specific teaching context, resulting in wasted time for those
+                    already proficient and information overload for those who weren't.</p>
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="emha-mpa-online-faculty-onboarding/workflow-v01.jpg"
+                                alt="Original multi-office onboarding process map">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">Original onboarding process map spanning three offices: Hiring Paperwork,
+                        Manual Setup, and Online Self-Paced Training</p>
+                </div>
+
+                <h3>The Real-World Performance Gap</h3>
+                <p>Beyond administrative setup, operational reality in our online graduate learning environment required
+                    high technical and logistical precision. Faculty were expected to self-navigate a complex ecosystem:
+                    locating specific course URLs, managing live session rooms in Adobe Connect, and correctly
+                    distributing custom course readers or PDF packages. Because faculty lacked a functional baseline
+                    operational standard, the first few weeks of every semester became a high-stress bottleneck defined
+                    by avoidable technical and logistical slip-ups.</p>
+
+                <h3>The Business &amp; Operational Impact</h3>
+                <p>The lack of structural onboarding posed a severe threat to operational efficiency and brand
+                    reputation. Mundane technical errors single-handedly delayed live sessions or resulted in inaccurate
+                    logistics being passed to students. Crucially, common user errors—such as instructors refusing to
+                    wear headphones—caused grating audio feedback during live broadcasts. To mitigate this, internal
+                    design staff had to be physically present at every single introductory live session to troubleshoot
+                    and coach instructors in front of their own students. This process induced immense stress for the
+                    instructors, degraded the student experience, and created an unsustainable, unscalable drain on our
+                    team's operational resources.</p>
+
+                <h2>My Design Decisions &amp; Rationale</h2>
+                <p>The core insight driving the solution was that onboarding in an online environment needs to do the
+                    social work that a physical campus does automatically — and that this requires responsiveness, not
+                    just more information. That framing led to two foundational design decisions.</p>
+                <p>First, all onboarding content — previously distributed across separate offices — was centralized into
+                    a single HubSpot-based experience. This gave instructors a unified, transparent view of their own
+                    progress and eliminated the confusion caused by overlapping office responsibilities. HubSpot was
+                    chosen specifically for its workflow automation capabilities, which allowed the system to respond to
+                    instructor behavior in real-time without requiring manual monitoring from staff.</p>
+                <p>Second, an iterative design process was adopted because of a key constraint: certain tasks could only
+                    be completed after others were finished. For example, an instructor could only access Moodle course
+                    content after their USC NetID was provisioned — a step outside the design team's direct control.
+                    Mapping these dependencies forced the experience to be structured around each instructor's realistic
+                    situation rather than an idealized linear sequence. Each design iteration cycled between ideation,
+                    wireframing, and testing with actual faculty, surfacing constraints that weren't visible from
+                    planning documents alone.</p>
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="emha-mpa-online-faculty-onboarding/workflow-v02.jpg"
+                                alt="Onboarding workflow redesign — iteration 2">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="emha-mpa-online-faculty-onboarding/workflow-v03.jpg"
+                                alt="Onboarding workflow redesign — iteration 3">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">Two successive redesigns of the onboarding flow — moving from a
+                        fragmented multi-office diagram toward a single adaptive decision tree</p>
+                </div>
+                <p>These workflow refinements directly shaped the portal's visual design. Each iteration of the UI
+                    prototype — developed in parallel with the logic redesigns — progressively streamlined the
+                    instructor experience, moving from a simple progress-bar checklist toward the fully adaptive,
+                    confidence-driven interface of the final build.</p>
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="emha-mpa-online-faculty-onboarding/mockup-v1-1.png"
+                                alt="Portal prototype — version 1">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="emha-mpa-online-faculty-onboarding/mockup-v2-1.png"
+                                alt="Portal prototype — version 2, homepage">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="emha-mpa-online-faculty-onboarding/mockup-v2-2.png"
+                                alt="Portal prototype — version 2, task detail with confidence check">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">Portal mockup iterations from v1 progress-bar tracks (left) to a v2
+                        checklist homepage and v2 task detail page with embedded video and confidence self-rating</p>
+                </div>
+
+                <h3>Bypassing the Rigid OPM Blueprint</h3>
+                <p>A significant portion of our online learning operations was historically tied to an institutional
+                    partnership with a major Online Program Manager (OPM), Pearson Mbinet. OPM frameworks are typically
+                    rigid, high-cost, "one-size-fits-all" ecosystems that often fail to align with the unique
+                    programmatic needs of a specific school. Rather than accepting an outsourced, suboptimal fit, I
+                    championed a homegrown solution built within HubSpot to cut out the excess logistical procedures and
+                    essentially extract the noise from the signal.</p>
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="emha-mpa-online-faculty-onboarding/hubspot-dashboard.jpg"
+                                alt="HubSpot website pages dashboard showing published onboarding pages">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">HubSpot website pages dashboard — all published faculty onboarding pages,
+                        built and managed independently of the OPM</p>
+                </div>
+
+                <h3>Strategic Stakeholder Navigation</h3>
+                <p>To navigate a sensitive vendor landscape and manage underlying institutional tensions, we initiated
+                    and deployed this onboarding system as a parallel pilot. We offered instructors an explicit choice:
+                    they could follow the rigid, standard OPM onboarding path with an external account manager, or opt
+                    to self-onboard at their own pace using our automated homegrown system. This strategic positioning
+                    framed the project not as an outright rejection of the vendor, but as a lean, cost-effective pilot
+                    designed to evaluate institutional autonomy and prepare the school to eventually break free from a
+                    restrictive OPM contract.</p>
+
+                <h2>Project Walkthrough &amp; Highlights</h2>
+                <p>The final system had two defining features: the centralization of previously fragmented onboarding
+                    content into one coherent experience, and a layer of logic-driven automation that enabled
+                    personalized — but non-invasive — support based on how each instructor engaged with the system.</p>
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="emha-mpa-online-faculty-onboarding/livesite-1.jpg"
+                                alt="Live Faculty Onboarding Portal — module homepage">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="emha-mpa-online-faculty-onboarding/livesite-2.jpg"
+                                alt="Live Faculty Onboarding Portal — Adobe Connect lesson with embedded video and confidence rating">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">Final live portal — module homepage with A/B/C/D onboarding tracks (left)
+                        and an Adobe Connect lesson page with embedded screencast and confidence rating</p>
+                </div>
+                <p>HubSpot workflows were the vehicle for this personalization. One workflow assessed instructor comfort
+                    after each onboarding module: at the conclusion of a task, instructors rated their perceived
+                    confidence on a 1–5 scale. Based on their cumulative score, the system automatically triggered
+                    varied responses — from a warm invitation to schedule a one-on-one meeting, to a curated set of
+                    supplemental resources, to a brief virtual affirmation. A second workflow tracked time since last
+                    login; if an instructor had been absent for more than seven days, a gentle nudge email was
+                    automatically sent to re-engage them — without ever requiring a staff member to manually follow up.
+                </p>
+                <p>These automations were designed to feel supportive rather than surveillance-like: the goal was to
+                    replicate the informal check-in a colleague might offer in a physical office, at scale and without
+                    administrative overhead.</p>
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="emha-mpa-online-faculty-onboarding/hubspot-master-workflow.png"
+                                alt="HubSpot master automation workflow diagram">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">HubSpot master automation workflow — branching logic routing instructors
+                        through qualification, re-engagement, and follow-up sequences</p>
+                </div>
+
+                <h3>Logic-Driven Branching Architecture</h3>
+                <p>The core engine of this experience is its backend conditional logic. Rather than navigating a linear
+                    sequence of pages, the instructor's journey is dictated by a multi-node decision tree. By leveraging
+                    self-reported feedback at key diagnostic nodes, the system adapts to the user's specific baseline. A
+                    returning instructor can bypass basic administrative setup, while an instructor needing help
+                    assembling a course reader from the Harvard Business School collection is automatically routed to a
+                    dedicated, step-by-step instructional pathway.</p>
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="emha-mpa-online-faculty-onboarding/workflow-decompose.png"
+                                alt="Backend conditional logic decomposition — NewFac visit triggers confidence check and workflow branching">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">Backend conditional logic — a NewFac portal visit triggers a confidence
+                        self-assessment, whose outcome sets HubSpot contact properties and routes follow-up actions</p>
+                </div>
+
+                <h3>Curated Micro-Learning Snippets</h3>
+                <p>Within each branched node, information is highly chunked. Long-form compliance text was replaced with
+                    targeted micro-learning elements, including brief, contextual screencasts that visually demonstrated
+                    high-risk tasks—such as configuring Adobe Connect audio parameters to prevent classroom audio
+                    feedback loops before the first live broadcast.</p>
+
+                <h2>Results &amp; Evidence of Value</h2>
+                <h3>Operational Stabilization &amp; Ticket Reduction</h3>
+                <p>Given the selective, specialized nature of graduate faculty cohorts, quantitative success was
+                    evaluated not by massive sample sizes, but by the direct stabilization of our operational
+                    environment. The primary metric of success was the drastic reduction of day-one technical issues and
+                    support tickets. Following the deployment of the portal, support interventions dropped noticeably
+                    from consistent double-digit panics down to isolated, single-digit edge cases.</p>
+
+                <h3>Qualitative Faculty Validation</h3>
+                <p>The most compelling evidence of value came through direct faculty feedback. The onboarding portal
+                    received explicit accolades and validation from a surprising number of instructors who thanked our
+                    team for respecting their time and setting them up for genuine classroom success. Multiple faculty
+                    members specifically expressed profound relief at being bypassed around the traditional, tedious OPM
+                    onboarding process.</p>
+
+                <h2>Reflection &amp; Lessons Learned</h2>
+                <h3>Infrastructure vs. Cost Sustainability</h3>
+                <p>From an instructional and behavioral standpoint, every engineered component of the portal
+                    successfully achieved its objective, rendering the pilot an internal triumph for our department.
+                    However, an honest post-mortem highlights the cost of our infrastructure. HubSpot served as an
+                    exceptionally powerful, reliable engine to prove our concept and secure a highly visible win without
+                    technical failure. Yet, its licensing fees are premium.</p>
+
+                <h3>The Architectural Pivot Plan</h3>
+                <p>If given the opportunity to build Version 2.0, I would look to optimize the technical stack by
+                    migrating to a leaner combination of independent SaaS tools—such as coupling Typeform's conditional
+                    logic engines with Zapier automation workflows. While combining disparate tools introduces
+                    additional integration checkpoints and potential vectors for technical error, the substantial
+                    reduction in software overhead would make the solution significantly more sustainable and scalable
+                    for localized departments lacking corporate enterprise budgets.</p>
+            </div>
+        </div>
+    </main>
+
+    <div class="lb-overlay" id="lb-overlay">
+        <button class="lb-close" id="lb-close">&times;</button>
+        <button class="lb-btn" id="lb-prev">&#8249;</button>
+        <div class="lb-content">
+            <img class="lb-img" id="lb-img" src="" alt="">
+            <p class="lb-caption" id="lb-caption"></p>
+        </div>
+        <button class="lb-btn" id="lb-next">&#8250;</button>
+    </div>
+
+    <script src="../../scripts/mobile-menu.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lightbox
+            const lbOverlay = document.getElementById('lb-overlay');
+            const lbImg = document.getElementById('lb-img');
+            const lbCaptionEl = document.getElementById('lb-caption');
+            let lbGallery = [], lbIdx = 0, lbCaption = '';
+
+            function lbOpen(gallery, idx, caption) {
+                lbGallery = gallery;
+                lbIdx = idx;
+                lbCaption = caption;
+                lbImg.src = gallery[idx].querySelector('img').src;
+                lbCaptionEl.textContent = caption;
+                document.getElementById('lb-prev').style.visibility = gallery.length > 1 ? '' : 'hidden';
+                document.getElementById('lb-next').style.visibility = gallery.length > 1 ? '' : 'hidden';
+                lbOverlay.classList.add('open');
+            }
+            function lbClose() { lbOverlay.classList.remove('open'); }
+            function lbGo(dir) {
+                lbIdx = (lbIdx + dir + lbGallery.length) % lbGallery.length;
+                lbImg.src = lbGallery[lbIdx].querySelector('img').src;
+            }
+
+            document.getElementById('lb-close').addEventListener('click', lbClose);
+            document.getElementById('lb-prev').addEventListener('click', () => lbGo(-1));
+            document.getElementById('lb-next').addEventListener('click', () => lbGo(1));
+            lbOverlay.addEventListener('click', e => { if (e.target === lbOverlay) lbClose(); });
+            document.addEventListener('keydown', e => {
+                if (!lbOverlay.classList.contains('open')) return;
+                if (e.key === 'ArrowLeft') lbGo(-1);
+                if (e.key === 'ArrowRight') lbGo(1);
+                if (e.key === 'Escape') lbClose();
+            });
+            document.querySelectorAll('.gallery-group').forEach(group => {
+                const caption = group.querySelector('.gallery-caption')?.textContent || '';
+                const thumbs = [...group.querySelectorAll('.gallery-thumb')];
+                thumbs.forEach((t, i) => t.addEventListener('click', () => lbOpen(thumbs, i, caption)));
+            });
+        });
+    </script>
+</body>
+
+</html>
