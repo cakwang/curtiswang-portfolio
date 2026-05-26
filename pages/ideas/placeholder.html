@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@100..900&display=swap">
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            background-color: transparent;
+        }
+        .placeholder-content {
+            margin-top: 28vh;
+            text-align: center;
+            color: var(--color-text-subtle);
+        }
+        .placeholder-content p {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 4px;
+        }
+        .placeholder-content h2 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 36px;
+            font-weight: 400;
+            color: var(--color-text);
+            margin-top: 0;
+            margin-bottom: 32px;
+        }
+        .randomizer-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .randomizer-row p {
+            margin: 0;
+        }
+        .surprise-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: var(--color-accent);
+            border: 1.5px solid var(--color-accent);
+            border-radius: 4px;
+            background: transparent;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="placeholder-content">
+        <h2>Start by selecting any post from the left.</h2>
+        <div class="randomizer-row">
+            <p>Not sure what to pick?</p>
+            <button class="surprise-btn" onclick="loadRandom()">Oh what the heck, let's pick a random post!</button>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+        const posts = [
+            '2026-05-15_learningtocode.html',
+            '2025-12-03_gemini3.html',
+            '2025-06-24_chargingbythehour.html',
+            '2024-03-14_photoshop.html',
+            '2024-02-19_2x2.html',
+            '2024-02-12_tell.html',
+            '2024-01-29_conversely.html',
+            '2024-01-09_title.html',
+            '2023-12-26_selling.html',
+        ];
+
+        function loadRandom() {
+            const pick = posts[Math.floor(Math.random() * posts.length)];
+            window.location.href = pick;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.screen.width <= 768) {
+                document.querySelector('.placeholder-content h2').textContent = 'Start by selecting any post above.';
+            }
+
+            const btn = document.querySelector('.surprise-btn');
+            const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim();
+
+            const hoverAnim = gsap.to(btn, {
+                backgroundColor: accentColor,
+                color: '#ffffff',
+                scale: 1.04,
+                y: -3,
+                rotation: -1.5,
+                transformOrigin: 'center center',
+                boxShadow: '0 12px 24px rgba(60, 0, 255, 0.2)',
+                duration: 0.2,
+                ease: 'power2.out',
+                paused: true
+            });
+
+            btn.addEventListener('mouseenter', () => hoverAnim.play());
+            btn.addEventListener('mouseleave', () => hoverAnim.reverse());
+        });
+    </script>
+</body>
+</html>
