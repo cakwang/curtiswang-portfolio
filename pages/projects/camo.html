@@ -9,9 +9,43 @@
         href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@100..900&display=swap">
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tldr-box { background-color: #f2f2f2; border: 1px solid #b0b0b0; border-radius: 12px; padding: 20px 28px 24px; margin: 0 0 32px; }
+        .tldr-label { font-size: 12px; font-weight: 600; text-transform: lowercase; letter-spacing: 0.08em; color: var(--color-text-muted); display: block; margin-bottom: 12px; }
+        .tldr-box p { font-size: 17px; line-height: 1.65; color: var(--color-text); margin: 0; }
+        .project-sections-col .tldr-box + h2 { margin-top: 0; }
+
+        .gallery-group { margin: 28px 0 36px; }
+        .gallery-row { display: flex; gap: 10px; justify-content: center; margin-bottom: 8px; flex-wrap: wrap; padding: 14px 0; }
+        .gallery-thumb { cursor: zoom-in; flex: 0 0 auto; margin: 0; border-radius: 6px; overflow: hidden; border: 1px solid var(--color-border); }
+        .gallery-thumb img { width: 200px; height: 125px; object-fit: cover; display: block; transition: opacity 0.2s ease; }
+        .gallery-thumb:hover img { opacity: 0.8; }
+        .project-sections-col .gallery-caption { font-size: 12px; line-height: 1.4; color: var(--color-text-subtle); text-align: center; font-style: italic; margin: 0 auto; max-width: 75%; }
+
+        .lb-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.88); z-index: 9999; align-items: center; justify-content: center; }
+        .lb-overlay.open { display: flex; }
+        .lb-content { display: flex; flex-direction: column; align-items: center; max-width: 88vw; }
+        .lb-img { max-width: 88vw; max-height: 80vh; object-fit: contain; border-radius: 4px; display: block; }
+        .lb-caption { color: rgba(255,255,255,0.85); font-size: 15px; text-align: center; margin-top: 12px; max-width: 600px; line-height: 1.4; }
+        .lb-btn { position: fixed; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.12); border: none; color: #fff; font-size: 36px; width: 52px; height: 52px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; z-index: 10000; }
+        .lb-btn:hover { background: rgba(255,255,255,0.25); }
+        #lb-prev { left: 20px; }
+        #lb-next { right: 20px; }
+        .lb-close { position: fixed; top: 20px; right: 20px; background: none; border: none; color: #fff; font-size: 40px; cursor: pointer; z-index: 10000; line-height: 1; padding: 4px; }
+    </style>
 </head>
 
 <body>
+    <div class="mobile-header" id="mobile-header">
+        <a href="../../index.html" class="mobile-logo-link">
+            <img src="../../assets/logo.png" alt="Curtis Wang" class="mobile-logo-img">
+        </a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
     <nav class="navbar">
         <div class="navbar-content">
             <div class="portfolio-logo">
@@ -28,23 +62,18 @@
         </div>
     </nav>
     <main class="main-content">
-        <div class="header">
-            <h1>Camo: Photo Editing Coach</h1>
-        </div>
         <div class="project-hero">
-            <img src="../../assets/placeholder-16-9.jpg" alt="Camo: Photo Editing Coach">
+            <img src="camo/_banner.jpg" alt="Camo: Photo Editing Coach">
             <div class="project-intro">
-                <p>A photo-editing app with an AI-powered coach that analyzes a user's raw photo against professional
-                    reference images — guiding intermediate photographers toward mastery step by step, without ever
-                    taking the creative wheel from their hands.</p>
+                <h1>Camo: Photo Editing Coach</h1>
             </div>
         </div>
         <div class="project-body">
             <div class="project-meta-col">
-                <div class="project-meta-item">
+                <div class="project-meta-item project-meta-client">
                     <div class="project-meta-value">Stanford University</div>
                 </div>
-                <div class="project-meta-item">
+                <div class="project-meta-item project-meta-location">
                     <div class="project-meta-value">Stanford, CA</div>
                 </div>
                 <div class="project-meta-item">
@@ -62,6 +91,10 @@
                 </div>
             </div>
             <div class="project-sections-col">
+                <div class="tldr-box">
+                    <span class="tldr-label">tl;dr</span>
+                    <p>An AI-powered photo editing app targeting the "DIY Perfectionist" — someone with creative ambition but intimidated by professional tools like Photoshop. Camo's coach analyzes a user's raw photo against professional references and suggests editing ranges rather than exact values, preserving creative agency while systematically building fluency. UI elements were deliberately designed to parallel Photoshop's interface patterns to reduce the re-learning cost when users eventually graduate to professional software.</p>
+                </div>
                 <h2>Problem &amp; Learner Context</h2>
                 <p>Amateur photographers face a persistent skills gap between the blunt simplicity of single-swipe
                     filters and the overwhelming complexity of professional editing suites like Photoshop. Users who
@@ -90,6 +123,15 @@
                     them into a visual narrative. Despite these differences in style, both users shared the same
                     frustration: the tools available to them did not match their creative ambitions.</p>
 
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="camo/user-personas.jpg" alt="2×2 user persona map">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">2×2 user persona map — plotting research participants across editing intent and audience axes to isolate the target "DIY Perfectionist" quadrant</p>
+                </div>
+
                 <h2>My Design Decisions &amp; Rationale</h2>
                 <p>The defining design principle for Camo was to keep the intelligent coach in a <em>supporting</em>
                     role — not as an instructor dictating a prescribed sequence of steps and exact adjustment values,
@@ -106,17 +148,51 @@
                     organization — were designed to parallel those of professional-grade software. This reduces the
                     cognitive re-learning cost when users eventually make the transition.</p>
 
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="camo/notes.jpg" alt="Design ideation spread with challenge framing and AI coaching flow">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="camo/wireframe-1.jpg" alt="Digital wireframe of the editing workspace">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">Design ideation spread — challenge framing, homepage layout sketch, and the full AI coaching decision-tree flow (left); digital wireframe of the editing workspace with reference panel, histogram comparisons, and Photoshop-parallel tool palette (right)</p>
+                </div>
+
                 <h2>Project Walkthrough &amp; Highlights</h2>
                 <p>Camo's core feature is an AI analysis engine that compares the user's raw image against a
                     professionally edited reference photo and generates multiple guided editing pathways from which the
                     user can choose. Rather than prescribing exact adjustment values, the system offers recommended
                     ranges — preserving the user's creative latitude while ensuring the outcome stays within
                     professional standards.</p>
+
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="camo/screen-1.jpg" alt="Reference selection screen">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">Reference selection — Camo surfaces professionally-edited versions of the user's same scene, tagged by photographer and scored by recommendation strength</p>
+                </div>
+
                 <p>Comparative visual feedback reinforces the learning loop: tools like histograms and
                     light-distribution graphs display both the raw and reference images side by side, allowing the user
                     to see their edits concretely and with interpretive depth. This encourages <em>thoughtful
                         emulation</em> rather than copy-cat replication, sustaining the user's engagement as a growing
                     editor rather than a passive follower of instructions.</p>
+
+                <div class="gallery-group">
+                    <div class="gallery-row">
+                        <figure class="gallery-thumb">
+                            <img src="camo/screen-2.jpg" alt="Editing workspace — raw photo with histogram baseline">
+                        </figure>
+                        <figure class="gallery-thumb">
+                            <img src="camo/screen-3.jpg" alt="Editing workspace — after Lighting adjustments">
+                        </figure>
+                    </div>
+                    <p class="gallery-caption">The editing loop — raw photo against the reference baseline (left) and after Lighting adjustments are applied (right), with the image shifting toward the warmer reference tone as histogram gaps narrow</p>
+                </div>
 
                 <h2>Proposed Evaluation Framework</h2>
                 <p>Because Camo was developed as an academic research prototype, it was not deployed to a live
@@ -167,6 +243,57 @@
             </div>
         </div>
     </main>
+
+    <div class="lb-overlay" id="lb-overlay">
+        <button class="lb-close" id="lb-close">&times;</button>
+        <button class="lb-btn" id="lb-prev">&#8249;</button>
+        <div class="lb-content">
+            <img class="lb-img" id="lb-img" src="" alt="">
+            <p class="lb-caption" id="lb-caption"></p>
+        </div>
+        <button class="lb-btn" id="lb-next">&#8250;</button>
+    </div>
+
+    <script src="../../scripts/mobile-menu.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lbOverlay = document.getElementById('lb-overlay');
+            const lbImg = document.getElementById('lb-img');
+            const lbCaptionEl = document.getElementById('lb-caption');
+            let lbGallery = [], lbIdx = 0;
+
+            function lbOpen(gallery, idx, caption) {
+                lbGallery = gallery;
+                lbIdx = idx;
+                lbImg.src = gallery[idx].querySelector('img').src;
+                lbCaptionEl.textContent = caption;
+                document.getElementById('lb-prev').style.visibility = gallery.length > 1 ? '' : 'hidden';
+                document.getElementById('lb-next').style.visibility = gallery.length > 1 ? '' : 'hidden';
+                lbOverlay.classList.add('open');
+            }
+            function lbClose() { lbOverlay.classList.remove('open'); }
+            function lbGo(dir) {
+                lbIdx = (lbIdx + dir + lbGallery.length) % lbGallery.length;
+                lbImg.src = lbGallery[lbIdx].querySelector('img').src;
+            }
+
+            document.getElementById('lb-close').addEventListener('click', lbClose);
+            document.getElementById('lb-prev').addEventListener('click', () => lbGo(-1));
+            document.getElementById('lb-next').addEventListener('click', () => lbGo(1));
+            lbOverlay.addEventListener('click', e => { if (e.target === lbOverlay) lbClose(); });
+            document.addEventListener('keydown', e => {
+                if (!lbOverlay.classList.contains('open')) return;
+                if (e.key === 'ArrowLeft') lbGo(-1);
+                if (e.key === 'ArrowRight') lbGo(1);
+                if (e.key === 'Escape') lbClose();
+            });
+            document.querySelectorAll('.gallery-group').forEach(group => {
+                const caption = group.querySelector('.gallery-caption')?.textContent || '';
+                const thumbs = [...group.querySelectorAll('.gallery-thumb')];
+                thumbs.forEach((t, i) => t.addEventListener('click', () => lbOpen(thumbs, i, caption)));
+            });
+        });
+    </script>
 </body>
 
 </html>

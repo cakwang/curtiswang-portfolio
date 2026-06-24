@@ -35,21 +35,22 @@ body {
 }
 
 .typewriter-text {
-    font-size: 112px;
+    font-size: 128px;
     color: white;
+    line-height: 1;
 }
 
 .cursor {
     display: inline-block;
     width: 8px;
-    height: 132px;
+    height: 150px;
     background-color: white;
     margin-left: 2px;
     animation: blink 1s infinite;
     font-family: 'Instrument Serif', serif;
-    font-size: 156px;
+    font-size: 176px;
     position: relative;
-    top: 16px;
+    top: 18px;
 }
 
 @keyframes blink {
@@ -195,4 +196,43 @@ body {
     color: #3c00ff;
     text-align: right;
     letter-spacing: 0.01em;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .typewriter-container {
+        padding: 60px 24px 32px;
+    }
+
+    .static-text {
+        font-size: 30px;
+        margin-bottom: 8px;
+    }
+
+    .typewriter-text {
+        font-size: 60px;
+        line-height: 1;
+    }
+
+    .cursor {
+        width: 5px;
+        height: 71px;
+        font-size: 94px;
+        top: 9px;
+    }
+
+    #recent-entry-card {
+        left: 16px;
+        right: 16px;
+        width: auto;
+        padding: 16px 20px 12px;
+    }
+
+    .recent-entry-title {
+        font-size: 24px;
+    }
+
+    .recent-entry-excerpt {
+        font-size: 14px;
+    }
 }

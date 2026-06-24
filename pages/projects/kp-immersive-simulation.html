@@ -4,14 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KP Metaverse - Curtis Wang</title>
+    <title>KP Immersive Simulation - Curtis Wang</title>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@100..900&display=swap">
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tldr-box { background-color: #f2f2f2; border: 1px solid #b0b0b0; border-radius: 12px; padding: 20px 28px 24px; margin: 0 0 32px; }
+        .tldr-label { font-size: 12px; font-weight: 600; text-transform: lowercase; letter-spacing: 0.08em; color: var(--color-text-muted); display: block; margin-bottom: 12px; }
+        .tldr-box p { font-size: 17px; line-height: 1.65; color: var(--color-text); margin: 0; }
+        .project-sections-col .tldr-box + h2 { margin-top: 0; }
+    </style>
 </head>
 
 <body>
+    <div class="mobile-header" id="mobile-header">
+        <a href="../../index.html" class="mobile-logo-link">
+            <img src="../../assets/logo.png" alt="Curtis Wang" class="mobile-logo-img">
+        </a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
     <nav class="navbar">
         <div class="navbar-content">
             <div class="portfolio-logo">
@@ -28,23 +44,18 @@
         </div>
     </nav>
     <main class="main-content">
-        <div class="header">
-            <h1>KP Metaverse</h1>
-        </div>
         <div class="project-hero">
-            <img src="../../assets/kp-metaverse-banner.jpg" alt="KP Metaverse">
+            <img src="kp-immersive-simulation/_banner.jpg" alt="KP Immersive Simulation">
             <div class="project-intro">
-                <p>An exploratory, high-fidelity digital twin simulation built in Unreal Engine to evaluate how
-                    immersive 3D spatial environments can transform procedural corporate onboarding and compliance
-                    training.</p>
+                <h1>KP Immersive Simulation</h1>
             </div>
         </div>
         <div class="project-body">
             <div class="project-meta-col">
-                <div class="project-meta-item">
+                <div class="project-meta-item project-meta-client">
                     <div class="project-meta-value">Kaiser Permanente</div>
                 </div>
-                <div class="project-meta-item">
+                <div class="project-meta-item project-meta-location">
                     <div class="project-meta-value">Los Angeles, CA</div>
                 </div>
                 <div class="project-meta-item">
@@ -62,15 +73,19 @@
                 </div>
             </div>
             <div class="project-sections-col">
+                <div class="tldr-box">
+                    <span class="tldr-label">tl;dr</span>
+                    <p>An Unreal Engine digital twin of a Kaiser Permanente facility, exploring whether high-fidelity 3D spatial simulation can replace flat compliance training. New hires virtually tour a photorealistic replica of their actual workplace — completing procedural wayfinding tasks instead of reading slides. A comparative pilot was proposed, benchmarking retention from this spatial medium against legacy modalities using Waste Disposal Compliance Training as the test case.</p>
+                </div>
                 <h2>Problem &amp; Learner Context</h2>
                 <p>Most instructional design initiatives begin by diagnosing an existing behavioral deficit. The
-                    <strong>KP Metaverse</strong> project represents a strategic exception: it is a technology-driven
+                    <strong>KP Immersive Simulation</strong> project represents a strategic exception: it is a technology-driven
                     exploration designed to uncover the latent instructional possibilities of state-of-the-art tools
                     typically confined to the entertainment industry, specifically Epic Games’ <strong>Unreal
                         Engine</strong>.</p>
 
-                <p>The genesis of this project was partly motivated by an era when the "metaverse" had gained explosive
-                    mainstream popularity, rapidly becoming the technological "flavor of the month" across digital media
+                <p>The genesis of this project was partly motivated by emerging opportunities in immersive 3D training technologies,
+                    which had gained mainstream attention across digital media
                     and popular culture. Rather than dismissing the trend as mere hype, this project sought to evaluate
                     its corporate utility: what doors would open if we bypassed standard, flat training staples and
                     recreated entire physical medical offices and facilities from the ground up as open-ended, real-time
@@ -138,7 +153,7 @@
                         <tr style="border-bottom: 2px solid var(--text-color, #000); text-align: left;">
                             <th style="padding: 10px;">Metric</th>
                             <th style="padding: 10px;">Legacy Slide-Based Modality</th>
-                            <th style="padding: 10px;">KP Metaverse Simulation</th>
+                            <th style="padding: 10px;">KP Immersive Simulation</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -200,6 +215,7 @@
             </div>
         </div>
     </main>
+    <script src="../../scripts/mobile-menu.js"></script>
 </body>
 
 </html>

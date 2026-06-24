@@ -12,6 +12,16 @@
 </head>
 
 <body>
+    <div class="mobile-header" id="mobile-header">
+        <a href="../index.html" class="mobile-logo-link">
+            <img src="../assets/logo.png" alt="Curtis Wang" class="mobile-logo-img">
+        </a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
     <nav class="navbar">
         <div class="navbar-content">
             <div class="portfolio-logo">
@@ -35,12 +45,12 @@
         </div>
 
         <div class="content-row">
-            <a href="projects/kp-metaverse.html" class="project-content">
+            <a href="projects/kp-immersive-simulation.html" class="project-content">
                 <div class="project-image">
-                    <img src="../assets/kp-metaverse-banner.jpg" alt="KP Metaverse">
+                    <img src="projects/kp-immersive-simulation/_banner.jpg" alt="KP Immersive Simulation">
                 </div>
                 <div class="project-info">
-                    <h1>KP Metaverse</h1>
+                    <h1>KP Immersive Simulation</h1>
                     <p>A comprehensive training program for corporate messaging and communication.</p>
                     <div class="project-tag-container">
                         <p class="project-tag">Corporate Training</p>
@@ -54,7 +64,7 @@
         <div class="content-row">
             <a href="projects/emha-mpa-online-faculty-onboarding.html" class="project-content">
                 <div class="project-image">
-                    <img src="../assets/placeholder-16-9.jpg" alt="EMHA & MPA Online Faculty Onboarding">
+                    <img src="projects/emha-mpa-online-faculty-onboarding/_banner.jpg" alt="EMHA & MPA Online Faculty Onboarding">
                 </div>
                 <div class="project-info">
                     <h1>EMHA & MPA Online Faculty Onboarding</h1>
@@ -71,7 +81,7 @@
         <div class="content-row">
             <a href="projects/what-works.html" class="project-content">
                 <div class="project-image">
-                    <img src="../assets/placeholder-16-9.jpg"
+                    <img src="projects/what-works/_banner.jpg"
                         alt="What Works? Promising Practices in International Development">
                 </div>
                 <div class="project-info">
@@ -89,7 +99,7 @@
         <div class="content-row">
             <a href="projects/open-learning-initiative-dashboard.html" class="project-content">
                 <div class="project-image">
-                    <img src="../assets/placeholder-16-9.jpg"
+                    <img src="projects/open-learning-initiative-dashboard/_banner.jpg"
                         alt="Open Learning Initiative Learner Analytics Dashboard">
                 </div>
                 <div class="project-info">
@@ -107,7 +117,7 @@
         <div class="content-row">
             <a href="projects/camo.html" class="project-content">
                 <div class="project-image">
-                    <img src="../assets/placeholder-16-9.jpg" alt="Camo: Personalized Photo Editing Coach">
+                    <img src="projects/camo/_banner.jpg" alt="Camo: Personalized Photo Editing Coach">
                 </div>
                 <div class="project-info">
                     <h1>Camo: Personalized Photo Editing Coach</h1>
@@ -123,6 +133,7 @@
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="../scripts/project-animations.js"></script>
+    <script src="../scripts/mobile-menu.js"></script>
 </body>
 
 </html>
