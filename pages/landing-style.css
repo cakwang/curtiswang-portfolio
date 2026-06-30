@@ -1,4 +1,14 @@
 /* Landing page styles */
+
+/* SVG signature paths for intro animation */
+.sig-path {
+    fill: none;
+    stroke: #000;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 18px;
+}
+
 body {
     margin: 0;
     padding: 0;
