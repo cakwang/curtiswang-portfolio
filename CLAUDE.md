@@ -15,6 +15,19 @@ To preview the site during development:
 
 All dependencies are loaded from CDN (GSAP, Font Awesome), so there is nothing to install or build. For the **Ideas iframe**, opening individual essay pages (`pages/ideas/*.html`) directly in the browser will work, but to test the full two-pane layout and tag filtering, open `pages/ideas.html` and use the TOC on the left.
 
+## Quick Start & Testing
+
+**To preview a page:**
+- **From the root:** Open `index.html` directly in your browser (drag-and-drop into browser tab, or use `File > Open File`)
+- **From subdirectories:** Open `pages/about.html`, `pages/projects.html`, etc. directly in the browser
+- **For Ideas section:** Open `pages/ideas.html` to test the two-pane layout and tag filtering. Click TOC items to load essays in the right pane.
+
+**If you need a local HTTP server** (e.g., to test CORS or for consistency): Run `python -m http.server 8000` (Python 3) or `npx http-server` (Node.js), then visit `http://localhost:8000`. This is optional — direct file opening works fine.
+
+**Reload the page** after editing HTML or CSS in your editor to see changes. Browser caching is usually not an issue with `file://` URLs, but hard refresh (`Ctrl+Shift+R` or `Cmd+Shift+R`) if needed.
+
+**Test file:** `test_about.html` exists in the root and is used for development/debugging of the About page — not part of the live site.
+
 ## Architecture
 
 **Individual Page Navigation:** The site consists of individual HTML pages. The fixed 285px left sidebar (navbar) is duplicated across all top-level pages. There is no iframe shell; navigating between pages changes the browser URL.
@@ -58,6 +71,59 @@ Adjust the `href` and `src` paths for pages in subdirectories (e.g. `../index.ht
 **External libraries (CDN):**
 - GSAP 3.12.5 (`cdnjs`) — used in `index.html`, `pages/about.html`, `pages/projects.html`, and all five `pages/projects/*.html` detail pages
 - Font Awesome 6.4.0 (`cdnjs`) — icons; loaded on every page
+
+## Common Development Tasks
+
+### Adding a New Ideas Post
+1. Create a new HTML file in `pages/ideas/` following the naming convention `YYYY-MM-DD_slug.html` (e.g., `2026-07-06_my-essay.html`). Use the template from [Ideas Essay Structure](#ideas-essay-structure) below.
+2. Add an entry to the TOC in `pages/ideas.html`:
+   - Find the `<ul>` in `.ideas-toc`
+   - Add a new `<li data-tag="TagName"><a href="ideas/2026-07-06_my-essay.html" target="ideas-frame">Your Title</a></li>`
+   - Use space-separated tags if the essay applies to multiple categories (e.g., `data-tag="Learning Business"`)
+3. Add the filename (without path) to the `posts` array in `pages/ideas/placeholder.html` for the randomizer button.
+4. If the essay includes images, create a subfolder `pages/ideas/2026-07-06_my-essay/` and place images there.
+
+### Adding a New Project Detail Page
+1. Create a new HTML file in `pages/projects/` (e.g., `pages/projects/my-project.html`).
+2. Use an existing project detail page as a template (e.g., `pages/projects/what-works.html`). They all follow the same structure: static tl;dr box, sections with h2 headings, and inline images.
+3. Add a link in `pages/projects.html` in the main `<main>` content area (inside a `<div class="content-row">`).
+4. Adjust the `href` and `src` paths to be relative to the `pages/` directory (see [File Paths & Navbar Synchronization](#file-paths--navbar-synchronization) below).
+
+### Updating Navigation Links
+**⚠️ Important:** The navbar is duplicated across all top-level pages (`index.html`, `pages/about.html`, `pages/ideas.html`, `pages/projects.html`, `pages/software.html`, `pages/creative.html`) and all five project detail pages. When updating navbar content or styling, **changes must be made to all occurrences** or they will be inconsistent.
+
+Future enhancement: Consider consolidating this into a shared include or component if this becomes a maintenance burden.
+
+## File Paths & Navbar Synchronization
+
+**From root-level pages** (`index.html`):
+```
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="pages/landing-style.css">
+<script src="scripts/mobile-menu.js"></script>
+<img src="assets/logo.png">
+<a href="pages/about.html">About</a>  <!-- Link to pages/ subdirectory -->
+```
+
+**From subdirectory pages** (`pages/about.html`, `pages/projects.html`, etc.):
+```
+<link rel="stylesheet" href="../style.css">  <!-- Go up one level -->
+<script src="../scripts/mobile-menu.js">      <!-- Go up one level -->
+<img src="../assets/logo.png">               <!-- Go up one level -->
+<a href="about.html">About</a>               <!-- Stay in pages/ directory -->
+```
+
+**From project detail pages** (`pages/projects/what-works.html`):
+```
+<link rel="stylesheet" href="../../style.css">  <!-- Go up two levels -->
+<script src="../../scripts/mobile-menu.js">      <!-- Go up two levels -->
+<img src="../../assets/logo.png">               <!-- Go up two levels -->
+<img src="./what-works/image.png">              <!-- Images stay in project subfolder -->
+<a href="../projects.html">Projects</a>         <!-- Go up one level to pages/ -->
+<a href="../../index.html">Home</a>             <!-- Go up two levels to root -->
+```
+
+Always verify relative paths after moving or creating files.
 
 ## tl;dr Component
 
@@ -119,9 +185,37 @@ All project detail pages use a **static, non-interactive tl;dr box** positioned 
 | Base fonts | Inter (weights 100–900) + Instrument Serif (Google Fonts) |
 | Responsive breakpoint | `768px` |
 
+## Responsive Design & Testing
+
+The site is designed to work at any viewport size, with a key responsive breakpoint at **`768px`** (defined as `--mobile-breakpoint` in many style rules). 
+
+**Mobile layout changes:**
+- Navbar becomes an off-canvas drawer (wired by `scripts/mobile-menu.js`)
+- Hamburger menu appears in `mobile-header` at the top
+- Main content stacks vertically
+- The Ideas section's two-pane layout changes to a single pane on narrow screens
+
+**To test mobile views:**
+1. Open a page in your browser and press `F12` (or `Cmd+Option+I` on Mac) to open DevTools
+2. Click the device toggle icon (top-left of DevTools) to enable responsive design mode
+3. Set viewport to mobile sizes (e.g., `375px` width for iPhone-sized) and resize to test the `768px` breakpoint
+4. Test navbar open/close and navigation flow
+5. Test the Ideas page's tag filtering on mobile
+
+No additional build step needed — the CSS media queries handle all responsive behavior.
+
 ## Deployment
 
-The site is served via GitHub Pages. A `.nojekyll` file is present at the root to suppress Jekyll processing. No build step — push to the repo and it deploys.
+The site is served via **GitHub Pages**. No build step — push to the `main` branch and it deploys automatically.
+
+**Configuration files:**
+- `.nojekyll` — Present in the root to suppress Jekyll processing; keeps your HTML and CSS as-is
+- `CNAME` — Contains the custom domain (`curtisw.com` or similar); GitHub Pages uses this to route traffic to the correct site
+
+When pushing changes, verify that:
+1. HTML files are valid and assets are linked with correct relative paths
+2. No sensitive information is committed (the `.gitignore` file is minimal; review before committing)
+3. GitHub Pages build completes successfully (check the GitHub Actions tab on the repo if needed)
 
 ## Known Issues & Incomplete Content
 
